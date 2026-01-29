@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SocketService } from './socket-service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { Room } from '@snake-and-ladders-monorepo/interfaces';
 
@@ -12,7 +12,7 @@ export class RoomService {
   room = new BehaviorSubject<Room | null>(null);
   room$ = this.room.asObservable();
 
-  roomResponse = new BehaviorSubject<{ success: boolean, playerId: number } | null>(null);
+  roomResponse = new Subject<{ success: boolean, playerId: number, type: 'create' | 'join' | 'rejoin' }>();
   roomResponse$ = this.roomResponse.asObservable();
 
   errorMessage = new BehaviorSubject<string | null>(null);
@@ -57,7 +57,7 @@ export class RoomService {
     this.socketService.listen<{ success: boolean, playerId: number }>('roomCreated').subscribe(
       data => {
         console.log("Room created: ", data);
-        this.roomResponse.next(data);
+        this.roomResponse.next({...data, type: 'create'});
       }
     )
   }
@@ -66,7 +66,7 @@ export class RoomService {
     this.socketService.listen<{ success: boolean, playerId: number }>('roomJoined').subscribe(
       data => {
         console.log("Room joined: ", data);
-        this.roomResponse.next(data);
+        this.roomResponse.next({...data, type: 'join'});
       }
     )
   }
@@ -102,7 +102,7 @@ export class RoomService {
       data => {
         console.log("Rejoin successful: ", data);
         this.room.next(data.room);
-        this.roomResponse.next({ success: true, playerId: data.playerId });
+        this.roomResponse.next({ success: true, playerId: data.playerId, type: 'rejoin' });
       }
     )
   }

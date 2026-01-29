@@ -36,7 +36,7 @@ export class Room implements OnInit {
     }
 
     if(this.roomId.trim() === '') {
-      // alert('Please enter a room ID.');
+      alert('Please enter a room ID.');
       this.errorMessage.set('Please enter a roomId');
 
       setTimeout(() => {
@@ -57,7 +57,7 @@ export class Room implements OnInit {
     }
 
     if(this.roomId.trim() === '') {
-      // alert('Please enter a room ID.');
+      alert('Please enter a room ID.');
       this.errorMessage.set('Please enter roomId');
 
       setTimeout(() => {
@@ -85,6 +85,7 @@ export class Room implements OnInit {
   private subscribeToRoomRequests() {
     this.roomService.roomResponse$.subscribe(
       response => {
+        console.log("Room response received in Room Component: ", response);
         if(response === null) return;
         if(response.success) {
           console.log("Successfully created or joined room");
