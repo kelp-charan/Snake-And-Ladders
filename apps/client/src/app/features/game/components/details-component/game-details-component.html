@@ -1,0 +1,32 @@
+<div class="details-container">
+    <div class="panel-content">
+        <div class="turn-card">
+            <span class="turn-label">Current Turn</span>
+            <span class="turn-player">{{ room().players[currentTurn()]?.username || 'Waiting...' }}</span>
+        </div>
+
+        <div class="players-section">
+            <h3 class="section-title">Players</h3>
+            <app-players-list-component [players]="room().players" [currentTurn]="currentTurn()"></app-players-list-component>
+        </div>
+
+        @if(room().gameState == gameState.WAITING) {
+        <div class="actions-section">
+            <button (click)="startGame()" *ngIf="room().admin === admin" class="btn-start">Start Game</button>
+            <button (click)="changePlayerStatus()" class="btn-status">
+                {{ room().players[currPlayerId].isReady ? 'Mark Not Ready' : 'Mark Ready' }}
+            </button>
+        </div>
+        }
+    </div>
+
+    @if(room().gameState == gameState.STARTED || gameStarted) {
+    <div class="dice-section">
+        <app-dice-component [players]="room().players" [currentTurn]="currentTurn()"></app-dice-component>
+    </div>
+    }
+
+    <button class="btn-exit" (click)="exitGame()">
+        Exit Game   
+    </button>
+</div>

@@ -1,0 +1,24 @@
+<div class="img-container">
+    <div class="game-container">
+        @if(room() != null) {
+        <app-game-details-component [room]="room()!" [currentTurn]="currentTurn()"></app-game-details-component>
+
+        <app-board-component [players]="room()!.players"></app-board-component>
+        }
+
+        @if(gameEnded()) {
+            <div class="game-over-overlay">
+                <div class="game-over-modal">
+                    <h2>🎉 Game Over!</h2>
+                    <p>Winner: <strong>{{ winner() }}</strong></p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if(animate()) {
+    <div [class.circle-container]="animate()" >
+        <div class="circle"></div>
+    </div>
+}

@@ -1,0 +1,80 @@
+import { Component, inject, input, OnInit, effect } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { PlayersListComponent } from '../players-list/players-list-component';
+import { DiceComponent } from '../dice/dice-component';
+
+import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
+import { GameDetailsService } from 'apps/client/src/app/core/services/game-details-service';
+import { RoomService } from 'apps/client/src/app/core/services/room-service';
+
+import { GameState } from '@snake-and-ladders-monorepo/enums';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-game-details-component',
+  imports: [CommonModule, PlayersListComponent, DiceComponent],
+  templateUrl: './game-details-component.html',
+  styleUrl: './game-details-component.css',
+})
+export class GameDetailsComponent implements OnInit {
+
+  room = input.required<Room>();
+  currentTurn = input<number>(0);
+  gameStarted: boolean = false;
+
+  gameState = GameState;
+
+  currPlayerId: number = Number(localStorage.getItem('playerId'));
+  admin: string = '';
+
+  router = inject(Router);
+
+  constructor(private gameDetailsService: GameDetailsService, private roomService: RoomService) {
+    effect(() => {
+      console.log("Room details changed (Game Details Component): ", this.room());
+    })
+  }
+
+  ngOnInit(): void {
+    this.admin = localStorage.getItem('username')!;
+    console.log("Room state: ", this.room().gameState)
+
+    this.gameDetailsService.gameStatus$.subscribe(
+      data => {
+        console.log("Change in game status: ", data);
+        this.gameStarted = data;
+      }
+    )
+
+    this.roomService.errorMessage$.subscribe(
+      err => {
+        if(err) {
+          // alert(`${err}`);
+          console.log("Error in GameDetailsComponent: ", err);
+        }
+      }
+    )
+
+  }
+
+  changePlayerStatus() {
+    const playerStatus = this.room().players[this.currPlayerId].isReady;
+
+    this.gameDetailsService.changePlayerStatus(this.room().roomId, !playerStatus);
+  }
+
+  startGame() {
+    this.gameDetailsService.startGame(this.room().roomId);
+  }
+
+  exitGame() {
+    console.log("Exit game clicked");
+    const roomId = this.room().roomId;
+    const playerId = localStorage.getItem('username')!;
+
+    this.gameDetailsService.exitGame(roomId, playerId);
+    this.router.navigate(['/auth/room']);
+  }
+
+}

@@ -1,0 +1,76 @@
+.players-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.player-item {
+    height: 40px;
+
+    background-color: #599B0D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+
+    :first-child{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.player-item.me {
+    background-color: #5c4636;
+}
+
+.player-item.active-turn {
+    background-color: #7cc243;
+    box-shadow: 0 0 0 2px #fff, 0 0 10px #7cc243;
+}
+
+p {
+    margin: 12px;
+    color: white;
+}
+
+.position-badge {
+    font-size: 11px;
+    background-color: #00000033;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+
+.status-chip {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-chip.ready {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-chip.not-ready {
+    background-color: #4a3728;
+    color: #e8ddd4;
+    border: 1px solid #5c4636;
+}
+
+img {
+    height: 90%;
+    width: auto;
+
+    object-fit: contain;
+}

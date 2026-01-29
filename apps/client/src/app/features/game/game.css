@@ -1,0 +1,108 @@
+.img-container {
+    height: 100%;
+    width: 100%;
+
+    background-image: url('/assets/forest-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.game-container {
+    height: 100vh;
+    margin: 0px;
+    padding: 0px 40px;
+
+    display: flex;
+    gap: 70px;
+    align-items: center;
+    position: relative;
+}
+
+.game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-modal {
+    background-color: #1a5c18;
+    padding: 40px 60px;
+    border-radius: 16px;
+    border: 4px solid #4a2020;
+    text-align: center;
+    box-shadow: 0 10px 40px #00000080;
+}
+
+.game-over-modal h2 {
+    color: #90ee90;
+    font-size: 36px;
+    margin: 0 0 16px 0;
+}
+
+.game-over-modal p {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
+.game-over-modal strong {
+    color: #7cc243;
+}
+
+.circle-container {
+    width: 100%;
+    height: 100vh;  
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    pointer-events: none;
+}
+
+.circle {
+    position: absolute;
+    width: 300vmax;
+    height: 300vmax;
+    
+    border-radius: 50%;
+    
+    background: transparent;
+    box-shadow: 0 0 0 150vmax #000000;
+    
+    animation: circle-open 1.5s ease-in-out forwards;
+}
+
+@keyframes circle-open {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 300vmax;
+        height: 300vmax;
+    }
+}
+
+
+/* @media (max-width: 900px) {
+    .game-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 40px;
+    }
+} */
