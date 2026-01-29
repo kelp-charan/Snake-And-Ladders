@@ -51,7 +51,7 @@ export class GameDetailsService {
     )
   }
 
-  exitGame(roomId: string, playerId: string) {
+  exitGame() {
     this.socketService.socket.disconnect();
   }
 

@@ -33,6 +33,11 @@ export class GameDetailsComponent implements OnInit {
   constructor(private gameDetailsService: GameDetailsService, private roomService: RoomService) {
     effect(() => {
       console.log("Room details changed (Game Details Component): ", this.room());
+      const username = localStorage.getItem('username')!;
+      this.room().players.forEach((player: Player, index: number) => {
+        player.username === username ? this.currPlayerId = index : null;
+      })
+      localStorage.setItem('playerId', this.currPlayerId.toString());
     })
   }
 
@@ -69,11 +74,7 @@ export class GameDetailsComponent implements OnInit {
   }
 
   exitGame() {
-    console.log("Exit game clicked");
-    const roomId = this.room().roomId;
-    const playerId = localStorage.getItem('username')!;
-
-    this.gameDetailsService.exitGame(roomId, playerId);
+    this.gameDetailsService.exitGame();
     this.router.navigate(['/auth/room']);
   }
 
