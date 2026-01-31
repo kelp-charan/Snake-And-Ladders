@@ -14,7 +14,7 @@ import { DiceService } from '../../core/services/dice-service';
   selector: 'app-game',
   imports: [BoardComponent, GameDetailsComponent],
   templateUrl: './game.html',
-  styleUrl: './game.css',
+  styleUrl: './game.scss',
 })
 export class Game implements OnInit {
 

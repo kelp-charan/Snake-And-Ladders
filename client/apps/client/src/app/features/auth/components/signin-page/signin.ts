@@ -9,7 +9,7 @@ import { AuthService } from 'apps/client/src/app/core/services/auth';
   selector: 'app-signin',
   imports: [RouterLink, FormsModule],
   templateUrl: './signin.html',
-  styleUrl: './signin.css',
+  styleUrl: './signin.scss',
 })
 export class Signin {
 

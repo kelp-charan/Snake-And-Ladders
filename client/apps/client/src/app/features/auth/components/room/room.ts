@@ -8,7 +8,7 @@ import { RoomService } from 'apps/client/src/app/core/services/room-service';
   selector: 'app-room',
   imports: [FormsModule],
   templateUrl: './room.html',
-  styleUrl: './room.css',
+  styleUrl: './room.scss',
 })
 export class Room implements OnInit {
 

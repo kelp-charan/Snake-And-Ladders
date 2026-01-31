@@ -5,7 +5,7 @@ import { Cell } from 'apps/client/src/app/core/interfaces/cell.interface';
   selector: 'app-cell-component',
   imports: [],
   templateUrl: './cell-component.html',
-  styleUrl: './cell-component.css',
+  styleUrl: './cell-component.scss',
 })
 export class CellComponent {
   cell = input.required<Cell>();

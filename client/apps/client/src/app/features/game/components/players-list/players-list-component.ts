@@ -7,7 +7,7 @@ import { Player } from '@snake-and-ladders-monorepo/interfaces';
   selector: 'app-players-list-component',
   imports: [],
   templateUrl: './players-list-component.html',
-  styleUrl: './players-list-component.css',
+  styleUrl: './players-list-component.scss',
 })
 export class PlayersListComponent implements OnInit {
 

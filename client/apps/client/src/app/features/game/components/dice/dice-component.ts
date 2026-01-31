@@ -8,7 +8,7 @@ import { GameDetailsService } from '../../../../core/services/game-details-servi
   selector: 'app-dice-component',
   imports: [],
   templateUrl: './dice-component.html',
-  styleUrl: './dice-component.css',
+  styleUrl: './dice-component.scss',
 })
 export class DiceComponent implements OnInit {
   value = signal<number>(1);

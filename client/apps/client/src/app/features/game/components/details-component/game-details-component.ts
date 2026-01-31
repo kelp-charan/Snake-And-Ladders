@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   selector: 'app-game-details-component',
   imports: [CommonModule, PlayersListComponent, DiceComponent],
   templateUrl: './game-details-component.html',
-  styleUrl: './game-details-component.css',
+  styleUrl: './game-details-component.scss',
 })
 export class GameDetailsComponent implements OnInit {
 

@@ -13,7 +13,7 @@ import { RoomService } from 'apps/client/src/app/core/services/room-service';
   selector: 'app-board-component',
   imports: [CellComponent],
   templateUrl: './board-component.html',
-  styleUrl: './board-component.css',
+  styleUrl: './board-component.scss',
 })
 export class BoardComponent implements OnInit {
 
