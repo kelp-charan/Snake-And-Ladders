@@ -5,6 +5,7 @@ import { Signup } from "./components/signup-page/signup";
 import { AuthComponent } from "./auth";
 import { Room } from "./components/room/room";
 import { guestGuard } from "../../core/guards/guest-guard";
+import { authGuard } from "../../core/guards/auth-guard";
 
 
 export const authRoutes: Routes = [
@@ -29,7 +30,8 @@ export const authRoutes: Routes = [
             },
             {
                 path: 'room',
-                component: Room
+                component: Room,
+                canActivate: [authGuard]
             }
         ],
     },
