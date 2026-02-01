@@ -18,7 +18,6 @@ import { GameState } from '@snake-and-ladders-monorepo/enums';
   styleUrl: './game-details-component.scss',
 })
 export class GameDetailsComponent implements OnInit {
-
   room = input.required<Room>();
   currentTurn = input<number>(0);
   gameStarted: boolean = false;
@@ -30,43 +29,47 @@ export class GameDetailsComponent implements OnInit {
 
   router = inject(Router);
 
-  constructor(private gameDetailsService: GameDetailsService, private roomService: RoomService) {
+  constructor(
+    private gameDetailsService: GameDetailsService,
+    private roomService: RoomService,
+  ) {
     effect(() => {
-      console.log("Room details changed (Game Details Component): ", this.room());
+      console.log(
+        'Room details changed (Game Details Component): ',
+        this.room(),
+      );
       const username = localStorage.getItem('username')!;
       this.room().players.forEach((player: Player, index: number) => {
-        player.username === username ? this.currPlayerId = index : null;
-      })
+        player.username === username ? (this.currPlayerId = index) : null;
+      });
       localStorage.setItem('playerId', this.currPlayerId.toString());
-    })
+    });
   }
 
   ngOnInit(): void {
     this.admin = localStorage.getItem('username')!;
-    console.log("Room state: ", this.room().gameState)
+    console.log('Room state: ', this.room().gameState);
 
-    this.gameDetailsService.gameStatus$.subscribe(
-      data => {
-        console.log("Change in game status: ", data);
-        this.gameStarted = data;
+    this.gameDetailsService.gameStatus$.subscribe((data) => {
+      console.log('Change in game status: ', data);
+      this.gameStarted = data;
+    });
+
+    this.roomService.errorMessage$.subscribe((err) => {
+      if (err) {
+        // alert(`${err}`);
+        console.log('Error in GameDetailsComponent: ', err);
       }
-    )
-
-    this.roomService.errorMessage$.subscribe(
-      err => {
-        if(err) {
-          // alert(`${err}`);
-          console.log("Error in GameDetailsComponent: ", err);
-        }
-      }
-    )
-
+    });
   }
 
   changePlayerStatus() {
     const playerStatus = this.room().players[this.currPlayerId].isReady;
 
-    this.gameDetailsService.changePlayerStatus(this.room().roomId, !playerStatus);
+    this.gameDetailsService.changePlayerStatus(
+      this.room().roomId,
+      !playerStatus,
+    );
   }
 
   startGame() {
@@ -77,5 +80,4 @@ export class GameDetailsComponent implements OnInit {
     this.gameDetailsService.exitGame();
     this.router.navigate(['/auth/room']);
   }
-
 }

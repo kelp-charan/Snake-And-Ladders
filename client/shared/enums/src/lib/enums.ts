@@ -1,5 +1,5 @@
 export enum GameState {
   WAITING,
   STARTED,
-  ENDED
+  ENDED,
 }

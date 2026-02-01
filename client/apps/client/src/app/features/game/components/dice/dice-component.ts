@@ -25,25 +25,32 @@ export class DiceComponent implements OnInit {
   private currentUsername: string | null = null;
   private currentPlayerId: number = 0;
 
-  constructor(private diceService: DiceService, private gameDetailsService: GameDetailsService) {
+  constructor(
+    private diceService: DiceService,
+    private gameDetailsService: GameDetailsService,
+  ) {
     this.roomId = localStorage.getItem('roomId');
     this.currentUsername = localStorage.getItem('username');
     this.currentPlayerId = parseInt(localStorage.getItem('playerId') || '0');
   }
 
   ngOnInit() {
-
     this.checkIfMyTurn(this.currentTurn());
 
-    this.diceService.diceRolled$.subscribe(data => {
+    this.diceService.diceRolled$.subscribe((data) => {
       if (data) {
         this.value.set(data.diceValue);
         this.checkIfMyTurn(data.playerTurn);
-        console.log("Dice rolled:", data.diceValue, "Next turn:", data.playerTurn);
+        console.log(
+          'Dice rolled:',
+          data.diceValue,
+          'Next turn:',
+          data.playerTurn,
+        );
       }
     });
 
-    this.diceService.gameEnded$.subscribe(data => {
+    this.diceService.gameEnded$.subscribe((data) => {
       if (data) {
         this.gameEnded.set(true);
         this.winner.set(data.winner);
@@ -55,20 +62,19 @@ export class DiceComponent implements OnInit {
     this.isCurrentPlayerTurn.set(turn === this.currentPlayerId);
   }
 
-
   rollDice() {
     if (this.isRolling() || !this.roomId) return;
-    
+
     this.isRolling.set(true);
-    
+
     const animationDuration = 800;
     const intervalTime = 80;
     let elapsed = 0;
-    
+
     const interval = setInterval(() => {
       this.value.set(Math.floor(Math.random() * 6) + 1);
       elapsed += intervalTime;
-      
+
       if (elapsed >= animationDuration) {
         clearInterval(interval);
         const finalValue = Math.floor(Math.random() * 6) + 1;

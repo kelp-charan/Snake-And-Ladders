@@ -1,34 +1,37 @@
 <div class="room-container">
-    <!-- <h1><span class="snake-text">Snake</span> 🐍 <span class="ladder-text">Ladders</span></h1> -->
-    <form action="">
+  <!-- <h1><span class="snake-text">Snake</span> 🐍 <span class="ladder-text">Ladders</span></h1> -->
+  <form action="">
+    <h2>Create or Join Room</h2>
 
-        <h2>Create or Join Room</h2>
+    <div class="form-group">
+      <label for="roomId">Enter Room ID</label>
+      <input
+        type="text"
+        id="roomId"
+        name="roomId"
+        required
+        [(ngModel)]="roomId"
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="roomId">Enter Room ID</label>
-            <input type="text" id="roomId" name="roomId" required [(ngModel)]="roomId">
-        </div>
+    <div class="btn-group">
+      <button (click)="createRoom()" class="btn-create">Create room</button>
+      <button (click)="joinRoom()" class="btn-join">Join room</button>
+    </div>
 
-        <div class="btn-group">
-            <button (click)="createRoom()" class="btn-create">Create room</button>
-            <button (click)="joinRoom()" class="btn-join">Join room</button>
-        </div>
-
-        <!-- @if(errorMessage()) {
+    <!-- @if(errorMessage()) {
         <p class="error-message">{{ errorMessage() }}</p>
         } -->
-    </form>
+  </form>
 </div>
 
 @if(animate()) {
-    <div [class.circle-container]="animate()" >
-        <div class="circle"></div>
-    </div>
-}
-
-@if(errorMessage()) {
-    <div class="msg-box-container">
-        <img src="/assets/msg-box.png" alt="">
-        <p>{{ errorMessage() }}</p> 
-    </div>
+<div [class.circle-container]="animate()">
+  <div class="circle"></div>
+</div>
+} @if(errorMessage()) {
+<div class="msg-box-container">
+  <img src="/assets/msg-box.png" alt="" />
+  <p>{{ errorMessage() }}</p>
+</div>
 }

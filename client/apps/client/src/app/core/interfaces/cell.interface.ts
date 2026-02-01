@@ -1,6 +1,5 @@
-
 export interface Cell {
-    number: number;
-    row: number;
-    col: number;
+  number: number;
+  row: number;
+  col: number;
 }

@@ -7,10 +7,8 @@ import { SocketService } from './socket-service';
   providedIn: 'root',
 })
 export class GameDetailsService {
-  
   room = new BehaviorSubject<Room | null>(null);
   room$ = this.room.asObservable();
-
 
   gameStatus = new BehaviorSubject<boolean | any>(null);
   gameStatus$ = this.gameStatus.asObservable();
@@ -19,7 +17,6 @@ export class GameDetailsService {
     this.listenToStatusChanges();
     this.listenToGameStart();
   }
-
 
   changePlayerStatus(roomId: string, status: boolean) {
     this.socketService.emit('changeStatus', { roomId, status });
@@ -34,25 +31,20 @@ export class GameDetailsService {
   }
 
   private listenToStatusChanges() {
-    this.socketService.listen<Room>('statusChanged').subscribe(
-      data => {
-        console.log("Status change received in GameDetailsService: ", data);
-        this.room.next(data);
-      }
-    )
+    this.socketService.listen<Room>('statusChanged').subscribe((data) => {
+      console.log('Status change received in GameDetailsService: ', data);
+      this.room.next(data);
+    });
   }
 
   private listenToGameStart() {
-    this.socketService.listen('gameStarted').subscribe(
-      data => {
-        console.log("Game started received in GameDetailsService: ", data);
-        this.gameStatus.next(data);
-      }
-    )
+    this.socketService.listen('gameStarted').subscribe((data) => {
+      console.log('Game started received in GameDetailsService: ', data);
+      this.gameStatus.next(data);
+    });
   }
 
   exitGame() {
     this.socketService.socket.disconnect();
   }
-
 }

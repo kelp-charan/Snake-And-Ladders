@@ -1,24 +1,19 @@
-
-
 $font-family-base: 'Irish Grover', system-ui;
 
-
-$font-size-xs: 0.75rem;      
-$font-size-sm: 0.875rem;     
-$font-size-md: 1rem;         
-$font-size-lg: 1.125rem;     
-$font-size-xl: 1.25rem;     
-$font-size-2xl: 1.5rem;      
-$font-size-3xl: 2.25rem;     
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 2.25rem;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-
-
-$color-white: #FFFFFF;
+$color-white: #ffffff;
 $color-black: #000000;
 $color-black-20: #00000033;
 $color-black-35: #00000059;
@@ -26,31 +21,26 @@ $color-black-50: #00000080;
 $color-black-66: #000000aa;
 $color-gray: #6b7280;
 
+$board-color: #1a5118;
+$board-border-color: #3e0606;
+$board-accent-gold: #ffd700;
+$board-accent-gold-transparent: #ffd70080;
 
-
-$board-color: #1A5118;          
-$board-border-color: #3E0606;   
-$board-accent-gold: #FFD700;
-$board-accent-gold-transparent: #FFD70080;
-
-
-
-$player-bg-color: #599B0D;      
-$player-active-color: #7cc243;  
-$player-wood-color: #5c4636;     
-$player-wood-dark: #4a3728;     
+$player-bg-color: #599b0d;
+$player-active-color: #7cc243;
+$player-wood-color: #5c4636;
+$player-wood-dark: #4a3728;
 $player-wood-border: #5c4636;
 
-$dice-btn-color: #059669;       
+$dice-btn-color: #059669;
 $dice-btn-disabled: $color-gray;
 
-$start-btn-color: #5cb85c;     
+$start-btn-color: #5cb85c;
 $start-btn-hover: #4cae4c;
 $start-btn-active: #449d44;
 
-$exit-btn-color: #d9534f;       
+$exit-btn-color: #d9534f;
 $exit-btn-hover: #c9302c;
-
 
 $status-success-bg: #d4edda;
 $status-success-text: #155724;
@@ -61,23 +51,19 @@ $status-notready-text: #e8ddd4;
 
 $light-green-text: #90ee90;
 
+$auth-bg-color: #00460e;
+$auth-input-outline: #10b60a;
+$auth-btn-color: #1cb124;
+$auth-text-accent: #0b8307;
+$auth-text-dark: #260b0b;
 
-
-$auth-bg-color: #00460E;         
-$auth-input-outline: #10B60A;   
-$auth-btn-color: #1CB124;      
-$auth-text-accent: #0b8307;     
-$auth-text-dark: #260B0B;       
-
-$room-btn-primary: #10B60A;
+$room-btn-primary: #10b60a;
 $room-btn-primary-hover: #0ad003;
-$room-btn-exit: #260B0B;
+$room-btn-exit: #260b0b;
 $room-btn-exit-hover: #370f0f;
 $room-btn-border-dark: #110505;
 
-
-
-$overlay-70: #000000B3;
+$overlay-70: #000000b3;
 $overlay-60: #00000099;
 $white-semi: #ffffff80;
 $white-semi-light: #ffffff1a;
@@ -85,4 +71,3 @@ $white-semi-lighter: #ffffff26;
 $white-semi-lightest: #ffffff14;
 $white-border-semi: #ffffff33;
 $white-border-semi-dark: #ffffff4d;
-

@@ -1,21 +1,25 @@
 <div class="players-container">
-    <div class="players-list">
-        @for(player of players(); track player.username) {
-        <div class="player-item" [class.active-turn]="$index === currentTurn()" >
-            <div>
-                <img src="/assets/character-{{ player.character }}.png" alt="">
-                <p>{{ player.username }}</p>
-                @if(player.username == myUsername) {
-                    <span class="you-badge"> (You) </span>
-                }
-                <span class="position-badge">Pos: {{ player.currPosition }}</span>
-            </div>
-
-            <div class="status-chip" [class.ready]="player.isReady" [class.not-ready]="!player.isReady">
-                {{ player.isReady ? 'Ready' : 'Not Ready' }}
-            </div>
-        </div>
+  <div class="players-list">
+    @for(player of players(); track player.username) {
+    <div class="player-item" [class.active-turn]="$index === currentTurn()">
+      <div>
+        <img src="/assets/character-{{ player.character }}.png" alt="" />
+        <p>{{ player.username }}</p>
+        @if(player.username == myUsername) {
+        <span class="you-badge"> (You) </span>
         }
-        <p>Number of players: {{ players().length }}</p>
+        <span class="position-badge">Pos: {{ player.currPosition }}</span>
+      </div>
+
+      <div
+        class="status-chip"
+        [class.ready]="player.isReady"
+        [class.not-ready]="!player.isReady"
+      >
+        {{ player.isReady ? 'Ready' : 'Not Ready' }}
+      </div>
     </div>
+    }
+    <p>Number of players: {{ players().length }}</p>
+  </div>
 </div>

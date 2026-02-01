@@ -1,123 +1,135 @@
-@use "../../../../../styles/variables" as *;
+@use '../../../../../styles/variables' as *;
 
 .dice-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 
-    --dice-size: 120px;
+  --dice-size: 120px;
 }
 
 .dice-scene {
-    width: var(--dice-size);
-    height: var(--dice-size);
-    perspective: 600px;
+  width: var(--dice-size);
+  height: var(--dice-size);
+  perspective: 600px;
 }
 
 .dice-cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.4s ease-out;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease-out;
 
-    &[data-face="1"] { transform: rotateX(0deg) rotateY(0deg); }
-    &[data-face="2"] { transform: rotateX(0deg) rotateY(-90deg); }
-    &[data-face="3"] { transform: rotateX(-90deg) rotateY(0deg); }
-    &[data-face="4"] { transform: rotateX(90deg) rotateY(0deg); }
-    &[data-face="5"] { transform: rotateX(0deg) rotateY(90deg); }
-    &[data-face="6"] { transform: rotateX(180deg) rotateY(0deg); }
+  &[data-face='1'] {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  &[data-face='2'] {
+    transform: rotateX(0deg) rotateY(-90deg);
+  }
+  &[data-face='3'] {
+    transform: rotateX(-90deg) rotateY(0deg);
+  }
+  &[data-face='4'] {
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+  &[data-face='5'] {
+    transform: rotateX(0deg) rotateY(90deg);
+  }
+  &[data-face='6'] {
+    transform: rotateX(180deg) rotateY(0deg);
+  }
 
-
-    &.rolling {
-        animation: dice-roll 1.5s linear infinite;
-    }
+  &.rolling {
+    animation: dice-roll 1.5s linear infinite;
+  }
 }
 
 .face {
-    position: absolute;
-    width: var(--dice-size);
-    height: var(--dice-size);
-    padding: 10px;
-    background-color: $color-white;
-    border-radius: 10px;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
+  position: absolute;
+  width: var(--dice-size);
+  height: var(--dice-size);
+  padding: 10px;
+  background-color: $color-white;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
 
-    .column {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 
 .point {
-    width: 25px;
-    height: 25px;
-    display: block;
-    background-color: $color-black;
-    border-radius: 50%;
-    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+  width: 25px;
+  height: 25px;
+  display: block;
+  background-color: $color-black;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
 .first-face {
-    transform: rotateY(0deg) translateZ(calc(var(--dice-size) / 2));
-    justify-content: center;
-    align-items: center;
+  transform: rotateY(0deg) translateZ(calc(var(--dice-size) / 2));
+  justify-content: center;
+  align-items: center;
 }
 
 .sixth-face {
-    transform: rotateY(180deg) translateZ(calc(var(--dice-size) / 2));
+  transform: rotateY(180deg) translateZ(calc(var(--dice-size) / 2));
 }
 
 .second-face {
-    transform: rotateY(90deg) translateZ(calc(var(--dice-size) / 2));
+  transform: rotateY(90deg) translateZ(calc(var(--dice-size) / 2));
 }
 
 .fifth-face {
-    transform: rotateY(-90deg) translateZ(calc(var(--dice-size) / 2));
+  transform: rotateY(-90deg) translateZ(calc(var(--dice-size) / 2));
 }
 
 .third-face {
-    transform: rotateX(90deg) translateZ(calc(var(--dice-size) / 2));
+  transform: rotateX(90deg) translateZ(calc(var(--dice-size) / 2));
 }
 
 .fourth-face {
-    transform: rotateX(-90deg) translateZ(calc(var(--dice-size) / 2));
+  transform: rotateX(-90deg) translateZ(calc(var(--dice-size) / 2));
 }
 
 button {
-    padding: 14px 20px;
-    margin-top: 20px;
-    background-color: $dice-btn-color;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    font-size: $font-size-md;
-    font-family: $font-family-base;
-    font-weight: $font-weight-bold;
-    cursor: pointer;
-    transition: opacity 0.2s ease, background-color 0.2s ease;
+  padding: 14px 20px;
+  margin-top: 20px;
+  background-color: $dice-btn-color;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: $font-size-md;
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 
-    &.disabled {
-        background-color: $dice-btn-disabled;
-    }
+  &.disabled {
+    background-color: $dice-btn-disabled;
+  }
 }
 
 @keyframes dice-roll {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-    100% {
-        transform: rotateX(720deg) rotateY(720deg);
-    }
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(720deg) rotateY(720deg);
+  }
 }

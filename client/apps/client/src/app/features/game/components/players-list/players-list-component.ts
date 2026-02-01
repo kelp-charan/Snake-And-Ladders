@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Component, effect, inject, input, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  input,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Player } from '@snake-and-ladders-monorepo/interfaces';
@@ -10,7 +17,6 @@ import { Player } from '@snake-and-ladders-monorepo/interfaces';
   styleUrl: './players-list-component.scss',
 })
 export class PlayersListComponent implements OnInit {
-
   players = input.required<Player[]>();
   currentTurn = input<number>(0);
 
@@ -20,19 +26,20 @@ export class PlayersListComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     effect(() => {
-      console.log("Players list updated (Players List Component): ", this.players());
+      console.log(
+        'Players list updated (Players List Component): ',
+        this.players(),
+      );
       this.changeDetectorRef.detectChanges();
-    })
+    });
   }
 
   ngOnInit(): void {
     const username = localStorage.getItem('username');
     if (username) {
       this.myUsername = username;
-    }
-    else {
+    } else {
       this.router.navigate(['/auth/room']);
     }
   }
-
 }

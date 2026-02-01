@@ -8,17 +8,20 @@ import { Room } from '@snake-and-ladders-monorepo/interfaces';
   providedIn: 'root',
 })
 export class RoomService {
-
   room = new BehaviorSubject<Room | null>(null);
   room$ = this.room.asObservable();
 
-  roomResponse = new Subject<{ success: boolean, playerId: number, type: 'create' | 'join' | 'rejoin' }>();
+  roomResponse = new Subject<{
+    success: boolean;
+    playerId: number;
+    type: 'create' | 'join' | 'rejoin';
+  }>();
   roomResponse$ = this.roomResponse.asObservable();
 
   errorMessage = new BehaviorSubject<string | null>(null);
   errorMessage$ = this.errorMessage.asObservable();
 
-  constructor(private socketService: SocketService ) {
+  constructor(private socketService: SocketService) {
     this.listenToErrors();
     this.listenToRoomCreation();
     this.listenToRoomJoining();
@@ -45,30 +48,30 @@ export class RoomService {
   }
 
   private listenToErrors() {
-    this.socketService.listen<{ message: string}>('error').subscribe(
-      data => {
-        console.log("Error received in RoomService: ", data);
+    this.socketService
+      .listen<{ message: string }>('error')
+      .subscribe((data) => {
+        console.log('Error received in RoomService: ', data);
         this.errorMessage.next(data.message);
-      }
-    )
+      });
   }
 
   private listenToRoomCreation() {
-    this.socketService.listen<{ success: boolean, playerId: number }>('roomCreated').subscribe(
-      data => {
-        console.log("Room created: ", data);
-        this.roomResponse.next({...data, type: 'create'});
-      }
-    )
+    this.socketService
+      .listen<{ success: boolean; playerId: number }>('roomCreated')
+      .subscribe((data) => {
+        console.log('Room created: ', data);
+        this.roomResponse.next({ ...data, type: 'create' });
+      });
   }
 
   private listenToRoomJoining() {
-    this.socketService.listen<{ success: boolean, playerId: number }>('roomJoined').subscribe(
-      data => {
-        console.log("Room joined: ", data);
-        this.roomResponse.next({...data, type: 'join'});
-      }
-    )
+    this.socketService
+      .listen<{ success: boolean; playerId: number }>('roomJoined')
+      .subscribe((data) => {
+        console.log('Room joined: ', data);
+        this.roomResponse.next({ ...data, type: 'join' });
+      });
   }
 
   // saveSession(roomId: string, username: string, playerId: number) {
@@ -80,31 +83,31 @@ export class RoomService {
   // }
 
   private listenToPlayerJoined() {
-    this.socketService.listen<Room>('playerJoined').subscribe(
-      data => {
-        console.log("Player joined room: ", data);
-        this.room.next(data);
-      }
-    )
+    this.socketService.listen<Room>('playerJoined').subscribe((data) => {
+      console.log('Player joined room: ', data);
+      this.room.next(data);
+    });
   }
 
   private listenToRoomDetails() {
-    this.socketService.listen<Room>('roomDetails').subscribe(
-      data => {
-        console.log("Room details received: ", data);
-        this.room.next(data);
-      }
-    )
+    this.socketService.listen<Room>('roomDetails').subscribe((data) => {
+      console.log('Room details received: ', data);
+      this.room.next(data);
+    });
   }
 
   private listenToRejoinSuccess() {
-    this.socketService.listen<{ room: Room, playerId: number }>('rejoinSuccess').subscribe(
-      data => {
-        console.log("Rejoin successful: ", data);
+    this.socketService
+      .listen<{ room: Room; playerId: number }>('rejoinSuccess')
+      .subscribe((data) => {
+        console.log('Rejoin successful: ', data);
         this.room.next(data.room);
-        this.roomResponse.next({ success: true, playerId: data.playerId, type: 'rejoin' });
-      }
-    )
+        this.roomResponse.next({
+          success: true,
+          playerId: data.playerId,
+          type: 'rejoin',
+        });
+      });
   }
 
   // private listenToSessionExpired() {

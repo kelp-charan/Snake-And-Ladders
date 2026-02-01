@@ -12,7 +12,6 @@ import { AuthService } from 'apps/client/src/app/core/services/auth';
   styleUrl: './signin.scss',
 })
 export class Signin {
-
   username: string = '';
   password: string = '';
 
@@ -23,22 +22,21 @@ export class Signin {
   constructor(private authService: AuthService) {}
 
   signIn() {
-    if(this.username.trim() === '' || this.password.trim() === '') {
+    if (this.username.trim() === '' || this.password.trim() === '') {
       alert('Please enter both username and password.');
       return;
     }
 
     this.authService.signIn(this.username, this.password).subscribe({
       next: (response) => {
-        console.log("Login successful: ", response);
-        if(response && response.user) {
-          this.response.set('Login Successful')
+        console.log('Login successful: ', response);
+        if (response && response.user) {
+          this.response.set('Login Successful');
           // alert('Login successful!');
           localStorage.setItem('token', response.token);
           localStorage.setItem('username', this.username);
           this.router.navigate(['/auth/room']);
-        }
-        else if(response) {
+        } else if (response) {
           this.response.set(response.message);
           // alert(response.message);
         }
@@ -47,7 +45,6 @@ export class Signin {
           this.response.set('');
         }, 2000);
       },
-    })
+    });
   }
-
 }

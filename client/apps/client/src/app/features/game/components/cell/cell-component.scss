@@ -1,17 +1,17 @@
-@use "../../../../../styles/variables" as *;
+@use '../../../../../styles/variables' as *;
 
 .cell {
-    /* width: 10%; */
-    /* height: 10%; */
+  /* width: 10%; */
+  /* height: 10%; */
 
-    width: 75px;
-    height: 75px;
+  width: 75px;
+  height: 75px;
 
-    color: $color-white;
-    padding: 6px;
+  color: $color-white;
+  padding: 6px;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    font-weight: normal;
-    font-size: small;
+  font-weight: normal;
+  font-size: small;
 }

@@ -13,5 +13,4 @@ export class CellComponent {
   get isEven() {
     return this.cell().number % 2 === 0;
   }
-
 }

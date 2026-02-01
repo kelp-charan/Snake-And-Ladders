@@ -1,81 +1,86 @@
 <div class="dice-wrapper">
-    <div class="dice-scene">
-        <div class="dice-cube" [class.rolling]="isRolling()" [attr.data-face]="value()">
-            <!-- Face 1 -->
-            <div class="face first-face">
-                <span class="point"></span>
-            </div>
+  <div class="dice-scene">
+    <div
+      class="dice-cube"
+      [class.rolling]="isRolling()"
+      [attr.data-face]="value()"
+    >
+      <!-- Face 1 -->
+      <div class="face first-face">
+        <span class="point"></span>
+      </div>
 
-            <!-- Face 6 (opposite of 1) -->
-            <div class="face sixth-face">
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-            </div>
-
-            <!-- Face 2 -->
-            <div class="face second-face">
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-            </div>
-
-            <!-- Face 5 (opposite of 2) -->
-            <div class="face fifth-face">
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-            </div>
-
-            <!-- Face 3 -->
-            <div class="face third-face">
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                </div>
-            </div>
-
-            <!-- Face 4 (opposite of 3) -->
-            <div class="face fourth-face">
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-                <div class="column">
-                    <span class="point"></span>
-                    <span class="point"></span>
-                </div>
-            </div>
+      <!-- Face 6 (opposite of 1) -->
+      <div class="face sixth-face">
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+          <span class="point"></span>
         </div>
-    </div>
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+          <span class="point"></span>
+        </div>
+      </div>
 
-    <button 
-        (click)="rollDice()" 
-        [disabled]="isRolling() || !isCurrentPlayerTurn()"
-        [class.disabled]="!isCurrentPlayerTurn()">
-        {{ isCurrentPlayerTurn() ? 'Roll' : 'Wait for your turn' }}
-    </button>
+      <!-- Face 2 -->
+      <div class="face second-face">
+        <div class="column">
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+        </div>
+      </div>
+
+      <!-- Face 5 (opposite of 2) -->
+      <div class="face fifth-face">
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+        </div>
+      </div>
+
+      <!-- Face 3 -->
+      <div class="face third-face">
+        <div class="column">
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+        </div>
+      </div>
+
+      <!-- Face 4 (opposite of 3) -->
+      <div class="face fourth-face">
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+        </div>
+        <div class="column">
+          <span class="point"></span>
+          <span class="point"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    (click)="rollDice()"
+    [disabled]="isRolling() || !isCurrentPlayerTurn()"
+    [class.disabled]="!isCurrentPlayerTurn()"
+  >
+    {{ isCurrentPlayerTurn() ? 'Roll' : 'Wait for your turn' }}
+  </button>
 </div>

@@ -1,3 +1,2 @@
-import { Route } from "@angular/router";
-import { Game } from "./game";
-
+import { Route } from '@angular/router';
+import { Game } from './game';
