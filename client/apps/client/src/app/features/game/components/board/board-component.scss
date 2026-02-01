@@ -1,6 +1,9 @@
+@use "../../../../../styles/variables" as *;
+
 :host {
     display: contents;
 }
+
 
 .board-container {
     height: 95%;
@@ -13,9 +16,9 @@
 
     border-radius: 10px;
 
-    background-color: #1A5118;
+    background-color: $board-color;
 
-    border: 6px solid #3E0606;
+    border: 6px solid $board-border-color;
 
     display: flex;
     justify-content: center;
@@ -98,7 +101,7 @@
     width: 200px;
     height: 200px;
     
-    background: #000000B3;
+    background: $overlay-70;
     border-radius: 20px;
     
     z-index: 100;
@@ -142,7 +145,7 @@
     justify-content: center;
     align-items: center;
     
-    background: #00000099;
+    background: $overlay-60;
     z-index: 200;
     
     animation: fadeIn 0.3s ease-out forwards;
@@ -156,25 +159,25 @@
     
     padding: 40px 60px;
     
-    background: #1A5118;
-    border: 6px solid #FFD700;
+    background: var.$board-color;
+    border: 6px solid var.$board-accent-gold;
     border-radius: 20px;
     
-    box-shadow: 0 0 30px #FFD70080;
+    box-shadow: 0 0 30px var.$board-accent-gold-transparent;
     
     animation: winnerScale 0.5s ease-out forwards;
 }
 
 .winner-content h2 {
     font-size: 36px;
-    color: #FFD700;
+    color: $board-accent-gold;
     margin: 0 0 15px 0;
-    text-shadow: 2px 2px 4px #00000080;
+    text-shadow: 2px 2px 4px $color-black-50;
 }
 
 .winner-content p {
     font-size: 28px;
-    color: #FFFFFF;
+    color: $color-white;
     margin: 0;
     font-weight: bold;
 } */

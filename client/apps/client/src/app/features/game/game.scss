@@ -1,3 +1,5 @@
+@use "../../../styles/variables" as *;
+
 .img-container {
     height: 100%;
     width: 100%;
@@ -25,7 +27,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000aa;
+    background-color: $color-black-66;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,16 +35,16 @@
 }
 
 .game-over-modal {
-    background-color: #1a5c18;
+    background-color: $board-color;
     padding: 40px 60px;
     border-radius: 16px;
-    border: 4px solid #4a2020;
+    border: 4px solid $player-wood-dark;
     text-align: center;
-    box-shadow: 0 10px 40px #00000080;
+    box-shadow: 0 10px 40px $color-black-50;
 }
 
 .game-over-modal h2 {
-    color: #90ee90;
+    color: $light-green-text;
     font-size: 36px;
     margin: 0 0 16px 0;
 }
@@ -54,7 +56,7 @@
 }
 
 .game-over-modal strong {
-    color: #7cc243;
+    color: $player-active-color;
 }
 
 .circle-container {

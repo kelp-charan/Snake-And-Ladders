@@ -1,3 +1,5 @@
+@use "../../../../../styles/variables" as *;
+
 :host {
     display: contents;
 }
@@ -8,9 +10,9 @@
     padding: 24px;
     box-sizing: border-box;
     border-radius: 14px;
-    background-color: #1a5c18;
-    border: 4px solid #4a2020;
-    box-shadow: 0 8px 30px #00000059;
+    background-color: $board-color;
+    border: 4px solid $player-wood-dark;
+    box-shadow: 0 8px 30px $color-black-35;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,7 +32,7 @@
 }
 
 .turn-card {
-    background-color: #00000033;
+    background-color: $color-black-20;
     padding: 16px 20px;
     border-radius: 10px;
     display: flex;
@@ -42,14 +44,14 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #ffffff80;
+    color: $white-semi;
     font-weight: 600;
 }
 
 .turn-player {
     font-size: 22px;
     font-weight: 700;
-    color: #90ee90;
+    color: $light-green-text;
 }
 
 .players-section {
@@ -63,7 +65,7 @@
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #ffffff80;
+    color: $white-semi;
     font-weight: 600;
 }
 
@@ -79,7 +81,7 @@
 .btn-start {
     width: 100%;
     padding: 14px 20px;
-    background-color: #5cb85c;
+    background-color: $start-btn-color;
     color: white;
     border: none;
     border-radius: 8px;
@@ -92,12 +94,12 @@
 }
 
 .btn-start:hover {
-    background-color: #4cae4c;
+    background-color: $start-btn-hover;
     transform: translateY(-1px);
 }
 
 .btn-start:active {
-    background-color: #449d44;
+    background-color: $start-btn-active;
     transform: translateY(0);
 }
 
@@ -133,7 +135,7 @@
 .btn-exit {
     width: 100%;
     padding: 14px 20px;
-    background-color: #d9534f;
+    background-color: $exit-btn-color;
     color: white;
 
     border-radius: 8px;
@@ -146,6 +148,6 @@
 }
 
 .btn-exit:hover {
-    background-color: #c9302c;
+    background-color: $exit-btn-hover;
     transform: translateY(-1px);
 }

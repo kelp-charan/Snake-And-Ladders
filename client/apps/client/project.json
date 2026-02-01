@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "var.$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/client/src",
@@ -15,6 +15,9 @@
         "main": "apps/client/src/main.ts",
         "tsConfig": "apps/client/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/client/src/styles"]
+        },
         "assets": [
           {
             "glob": "**/*",

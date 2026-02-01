@@ -1,3 +1,5 @@
+@use "../../../../../styles/variables" as *;
+
 .cell {
     /* width: 10%; */
     /* height: 10%; */
@@ -5,7 +7,7 @@
     width: 75px;
     height: 75px;
 
-    color: white;
+    color: $color-white;
     padding: 6px;
 
     box-sizing: border-box;

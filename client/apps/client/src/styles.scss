@@ -1,24 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-// @keyframes slide-in-from-left {
-//     from {
-//         transform: translateX(100%);
-//     }
-//     to {
-//         transform: translateX(0%);
-//     }
-// }
 
-// ::view-transition-group(auth-card) {
-//     animation-duration: 300ms;
-// }
-
-// ::view-transition-old(auth-card) {
-//     animation-name: slide-to-left;
-// }
-
-// ::view-transition-new(auth-card) {
-//     animation-name: slide-in-from-left;
-// }
+@use "./styles/variables" as *;
 
 body {
     font-family: "Irish Grover", system-ui;
