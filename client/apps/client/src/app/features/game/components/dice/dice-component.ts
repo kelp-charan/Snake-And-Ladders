@@ -1,6 +1,6 @@
-import { Component, signal, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 
-import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
+import { Player } from '@snake-and-ladders-monorepo/interfaces';
 import { DiceService } from '../../../../core/services/dice-service';
 import { GameDetailsService } from '../../../../core/services/game-details-service';
 

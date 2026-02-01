@@ -1,14 +1,14 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Room, Player } from '@snake-and-ladders-monorepo/interfaces';
+import { Room } from '@snake-and-ladders-monorepo/interfaces';
 
 import { RoomService } from '../../core/services/room-service';
 
+import { DiceService } from '../../core/services/dice-service';
+import { GameDetailsService } from '../../core/services/game-details-service';
 import { BoardComponent } from './components/board/board-component';
 import { GameDetailsComponent } from './components/details-component/game-details-component';
-import { GameDetailsService } from '../../core/services/game-details-service';
-import { DiceService } from '../../core/services/dice-service';
 
 @Component({
   selector: 'app-game',

@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { Game } from './features/game/game';
 import { authGuard } from './core/guards/auth-guard';
+import { Game } from './features/game/game';
 
 export const appRoutes: Route[] = [
     {

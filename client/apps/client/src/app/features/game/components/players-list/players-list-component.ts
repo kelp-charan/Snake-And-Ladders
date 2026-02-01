@@ -1,4 +1,4 @@
-import { Component, input, OnInit, inject, effect, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Player } from '@snake-and-ladders-monorepo/interfaces';

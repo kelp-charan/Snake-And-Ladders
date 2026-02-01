@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Room } from '@snake-and-ladders-monorepo/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { SocketService } from './socket-service';
-import { Room } from '@snake-and-ladders-monorepo/interfaces';
 
 export interface DiceRollResult {
   diceValue: number;

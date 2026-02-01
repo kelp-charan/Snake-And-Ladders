@@ -1,11 +1,11 @@
 import { Routes } from "@angular/router";
 
-import { Signin } from "./components/signin-page/signin";
-import { Signup } from "./components/signup-page/signup";
+import { authGuard } from "../../core/guards/auth-guard";
+import { guestGuard } from "../../core/guards/guest-guard";
 import { AuthComponent } from "./auth";
 import { Room } from "./components/room/room";
-import { guestGuard } from "../../core/guards/guest-guard";
-import { authGuard } from "../../core/guards/auth-guard";
+import { Signin } from "./components/signin-page/signin";
+import { Signup } from "./components/signup-page/signup";
 
 
 export const authRoutes: Routes = [

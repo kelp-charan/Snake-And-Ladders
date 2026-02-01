@@ -1,15 +1,15 @@
-import { Component, inject, input, OnInit, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, effect, inject, input, OnInit } from '@angular/core';
 
-import { PlayersListComponent } from '../players-list/players-list-component';
 import { DiceComponent } from '../dice/dice-component';
+import { PlayersListComponent } from '../players-list/players-list-component';
 
 import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
 import { GameDetailsService } from 'apps/client/src/app/core/services/game-details-service';
 import { RoomService } from 'apps/client/src/app/core/services/room-service';
 
-import { GameState } from '@snake-and-ladders-monorepo/enums';
 import { Router } from '@angular/router';
+import { GameState } from '@snake-and-ladders-monorepo/enums';
 
 @Component({
   selector: 'app-game-details-component',

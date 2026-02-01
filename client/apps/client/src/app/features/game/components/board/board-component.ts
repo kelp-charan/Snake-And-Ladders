@@ -1,4 +1,4 @@
-import { Component, computed, input, OnInit, signal, effect } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 
 import { CellComponent } from '../cell/cell-component';
 

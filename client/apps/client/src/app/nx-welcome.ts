@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
           -apple-system,
           BlinkMacSystemFont,
           'Segoe UI',
-          Roboto,
+          Roboto,‚
           'Helvetica Neue',
           Arial,
           'Noto Sans',

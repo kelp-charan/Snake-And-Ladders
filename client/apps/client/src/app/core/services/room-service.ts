@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { SocketService } from './socket-service';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { SocketService } from './socket-service';
 
 import { Room } from '@snake-and-ladders-monorepo/interfaces';
 

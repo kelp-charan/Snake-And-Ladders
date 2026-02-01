@@ -1,11 +1,11 @@
-import { ConnectedSocket, MessageBody, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
-import { Server, Socket } from "socket.io"
+import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { Server, Socket } from "socket.io";
 
 // import { Room } from './interfaces/room.interface';
 // import { Player } from './interfaces/player.interface';
 
-import { Room, Player } from "@snake-and-ladders-monorepo/interfaces"
 import { GameState } from '@snake-and-ladders-monorepo/enums';
+import { Player, Room } from "@snake-and-ladders-monorepo/interfaces";
 
 interface ServerPlayer extends Player {
   disconnectedTimer?: ReturnType<typeof setTimeout>;
