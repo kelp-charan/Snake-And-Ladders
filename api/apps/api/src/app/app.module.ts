@@ -7,18 +7,17 @@ import { AuthModule } from './auth/auth.module';
 import { GameGatewayGateway } from './game/game-gateway.gateway';
 import { UserModule } from './user/user.module';
 
-
-import { JwtModule } from "@nestjs/jwt";
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
-    AuthModule, 
+    AuthModule,
     UserModule,
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1h' },
-    })
+    }),
   ],
   controllers: [AppController],
   providers: [AppService, GameGatewayGateway],

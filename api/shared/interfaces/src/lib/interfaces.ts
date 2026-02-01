@@ -1,4 +1,4 @@
-import { GameState } from "@snake-and-ladders-monorepo/enums";
+import { GameState } from '@snake-and-ladders-monorepo/enums';
 
 export interface Player {
   socketId: string;

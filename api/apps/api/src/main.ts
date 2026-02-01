@@ -13,14 +13,12 @@ async function bootstrap() {
     origin: process.env.FRONTEND_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
-  })
+  });
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3000;
   await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: ${process.env.BACKEND_URL}`,
-  );
+  Logger.log(`🚀 Application is running on: ${process.env.BACKEND_URL}`);
 }
 
 bootstrap();
