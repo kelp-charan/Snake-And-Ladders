@@ -6,7 +6,7 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-
+import { Logger } from '@nestjs/common';
 // import { Room } from './interfaces/room.interface';
 // import { Player } from './interfaces/player.interface';
 
@@ -133,12 +133,11 @@ export class GameGatewayGateway {
     }
 
     const room = this.rooms.get(roomId);
-    console.log('Room details (Before): ', room);
+    Logger.log('Room details (Before): ', room);
     client.join(roomId);
 
-    console.log('Sending room details: ', room);
-    console.log('To client ID: ', client.id);
-
+    Logger.log('Sending room details: ', room);
+    Logger.log('To client ID: ', client.id);
     const clietntRoom: Room = this.getClientRoom(room);
 
     this.server.to(client.id).emit('roomDetails', clietntRoom);
@@ -151,7 +150,7 @@ export class GameGatewayGateway {
   ) {
     const { roomId, username, playerId } = data;
 
-    console.log(
+    Logger.log(
       `Rejoin request for roomId: ${roomId}, username: ${username}, playerId: ${playerId}`,
     );
 
@@ -181,7 +180,7 @@ export class GameGatewayGateway {
     this.rooms.set(roomId, room);
     client.join(roomId);
 
-    console.log(`Player ${username} rejoined room ${roomId}`);
+    Logger.log(`Player ${username} rejoined room ${roomId}`);
 
     const clientRoom: Room = this.getClientRoom(room);
     this.server.to(client.id).emit('roomDetails', clientRoom);
@@ -307,13 +306,13 @@ export class GameGatewayGateway {
 
     // if (this.snakes.has(newPosition)) {
     //   const snakeTail = this.snakes.get(newPosition);
-    //   console.log(`Player ${player.username} hit snake at ${newPosition}, sliding to ${snakeTail}`);
+    //   Logger.log(`Player ${player.username} hit snake at ${newPosition}, sliding to ${snakeTail}`);
     //   newPosition = snakeTail;
     // }
 
     // if (this.ladders.has(newPosition)) {
     //   const ladderTop = this.ladders.get(newPosition);
-    //   console.log(`Player ${player.username} hit ladder at ${newPosition}, climbing to ${ladderTop}`);
+    //   Logger.log(`Player ${player.username} hit ladder at ${newPosition}, climbing to ${ladderTop}`);
     //   newPosition = ladderTop;
     // }
 
@@ -370,17 +369,17 @@ export class GameGatewayGateway {
 
         if (playerIdx !== -1) {
           room.players.splice(playerIdx, 1);
-          console.log(
+          Logger.log(
             `Player ${player.username} removed from room ${roomId} after timeout`,
           );
 
           if (room.players.length === 0) {
             this.rooms.delete(roomId);
-            console.log(`Room ${roomId} deleted as it became empty`);
+            Logger.log(`Room ${roomId} deleted as it became empty`);
           } else {
             if (room.admin === player.username) {
               room.admin = room.players[0].username;
-              console.log(`Admin left. New admin is ${room} in room ${roomId}`);
+              Logger.log(`Admin left. New admin is ${room.players[0].username} in room ${roomId}`);
             }
             this.rooms.set(roomId, room);
             this.server

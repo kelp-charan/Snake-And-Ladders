@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
 
@@ -14,7 +14,7 @@ export class AuthService {
       const user = await this.userService.createUser(username, password);
       return { message: 'User created successfully', user };
     } catch (err) {
-      console.log('Error: ', err.message);
+      Logger.log('Error: ', err.message);
 
       return { message: 'Error creating user', error: err.message };
     }
