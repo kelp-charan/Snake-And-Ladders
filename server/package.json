@@ -1,5 +1,5 @@
 {
-  "name": "@snake-and-ladders/api",
+  "name": "@snake-and-ladders/server",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
