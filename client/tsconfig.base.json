@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -16,9 +15,9 @@
     "baseUrl": ".",
     "paths": {
       "@snake-and-ladders-monorepo/interfaces": [
-        "shared/interfaces/src/index.ts"
+        "../shared-library/src/lib/interfaces/index.ts"
       ],
-      "@snake-and-ladders-monorepo/enums": ["shared/enums/src/index.ts"]
+      "@snake-and-ladders-monorepo/enums": ["../shared-library/src/lib/enums/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

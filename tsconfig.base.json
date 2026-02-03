@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ES2020", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@snake-and-ladders-monorepo/shared-library": [
+        "shared-library/src/index.ts"
+      ]
+    },
+    "strict": false,
+    "skipLibCheck": true
+  }
+}
