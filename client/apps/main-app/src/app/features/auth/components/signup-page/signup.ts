@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterLink } from '@angular/router';
 
-import { AuthService } from 'apps/client/src/app/core/services/auth';
+import { AuthService } from 'apps/main-app/src/app/core/services/auth';
 
 @Component({
   selector: 'app-signup',

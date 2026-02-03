@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Cell } from 'apps/client/src/app/core/interfaces/cell.interface';
+import { Cell } from 'apps/main-app/src/app/core/interfaces/cell.interface';
 
 @Component({
   selector: 'app-cell-component',

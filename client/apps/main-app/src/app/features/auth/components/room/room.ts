@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RoomService } from 'apps/client/src/app/core/services/room-service';
+import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
 
 @Component({
   selector: 'app-room',

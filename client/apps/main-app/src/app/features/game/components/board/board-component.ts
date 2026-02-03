@@ -4,10 +4,10 @@ import { CellComponent } from '../cell/cell-component';
 
 import { Player } from '@snake-and-ladders-monorepo/interfaces';
 
-import { Cell } from 'apps/client/src/app/core/interfaces/cell.interface';
-import { DiceService } from 'apps/client/src/app/core/services/dice-service';
-import { GameDetailsService } from 'apps/client/src/app/core/services/game-details-service';
-import { RoomService } from 'apps/client/src/app/core/services/room-service';
+import { Cell } from 'apps/main-app/src/app/core/interfaces/cell.interface';
+import { DiceService } from 'apps/main-app/src/app/core/services/dice-service';
+import { GameDetailsService } from 'apps/main-app/src/app/core/services/game-details-service';
+import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
 
 @Component({
   selector: 'app-board-component',

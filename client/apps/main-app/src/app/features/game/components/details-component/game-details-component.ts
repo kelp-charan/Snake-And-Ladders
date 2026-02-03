@@ -5,8 +5,8 @@ import { DiceComponent } from '../dice/dice-component';
 import { PlayersListComponent } from '../players-list/players-list-component';
 
 import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
-import { GameDetailsService } from 'apps/client/src/app/core/services/game-details-service';
-import { RoomService } from 'apps/client/src/app/core/services/room-service';
+import { GameDetailsService } from 'apps/main-app/src/app/core/services/game-details-service';
+import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
 
 import { Router } from '@angular/router';
 import { GameState } from '@snake-and-ladders-monorepo/enums';
