@@ -37,7 +37,6 @@ export class DiceService {
     this.socketService
       .listen<DiceRollResult>('diceRolled')
       .subscribe((data) => {
-        console.log('Dice rolled event received:', data);
         this.diceRolled.next(data);
       });
   }
@@ -46,7 +45,6 @@ export class DiceService {
     this.socketService
       .listen<{ winner: string; room: Room }>('gameEnded')
       .subscribe((data) => {
-        console.log('Game ended! Winner:', data.winner);
         this.gameEnded.next(data);
       });
   }

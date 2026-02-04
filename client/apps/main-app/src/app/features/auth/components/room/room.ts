@@ -81,10 +81,8 @@ export class Room implements OnInit {
 
   private subscribeToRoomRequests() {
     this.roomService.roomResponse$.subscribe((response) => {
-      console.log('Room response received in Room Component: ', response);
       if (response === null) return;
       if (response.success) {
-        console.log('Successfully created or joined room');
         // alert('Successfully created or joined room');
 
         const username = localStorage.getItem('username') || '';
@@ -101,7 +99,6 @@ export class Room implements OnInit {
 
         // this.router.navigate([`/room/${this.roomId}`]);
       } else {
-        console.log('Failed to create or join room');
         alert('Failed to create or join room');
       }
     });

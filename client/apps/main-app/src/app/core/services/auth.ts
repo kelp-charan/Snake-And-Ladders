@@ -38,8 +38,8 @@ export class AuthService {
       }
 
       return true;
-    } catch (err) {
-      console.log('Error in token validation: ', err);
+    } 
+    catch (err) {
       this.logout();
       return false;
     }

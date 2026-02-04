@@ -18,13 +18,11 @@ export class SocketService {
 
   constructor() {
     this.socket.on('connect', () => {
-      console.log('Socket connected:', this.socket.id);
       this.connected.next(true);
       // this.rejoinRoom();
     });
 
     this.socket.on('disconnect', () => {
-      console.log('Socket disconnected');
       this.connected.next(false);
     });
   }

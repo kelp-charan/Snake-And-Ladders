@@ -53,7 +53,6 @@ export class BoardComponent implements OnInit {
     private roomService: RoomService,
   ) {
     this.initializeBoard();
-    console.log(this.board);
 
     // effect(() => {
     //   const pl = this.players();
@@ -68,8 +67,7 @@ export class BoardComponent implements OnInit {
     // const initialPositions = this.players().map(p => p.currPosition);
     // this.playersPositions.set(initialPositions);
     this.playersPositions.set(this.players().map((p) => p.currPosition ?? 1));
-    console.log('Initial Player Positions: ', this.playersPositions);
-    console.log('Players: ', this.players());
+
     this.subscibeToDiceRolls();
 
     this.subscribeToPlayerJoined();
@@ -89,7 +87,6 @@ export class BoardComponent implements OnInit {
         }
         number--;
       }
-      console.log(`Row ${row}: `, this.board[row]);
     }
   }
 
@@ -107,13 +104,6 @@ export class BoardComponent implements OnInit {
   private subscibeToDiceRolls() {
     this.diceService.diceRolled$.subscribe((data) => {
       if (!data) return;
-      console.log('Board Component received dice roll: ', data);
-      console.log(
-        'Inuput values - players: ',
-        this.players(),
-        ' playersPositions: ',
-        this.playersPositions(),
-      );
       // we get diceValue, newPosition, playerIndex
       this.movePlayer(data?.diceValue, data.newPosition, data.playerIndex);
     });
@@ -138,11 +128,8 @@ export class BoardComponent implements OnInit {
     const positionAfterDice = startPosition + diceValue;
 
     if (positionAfterDice > 100) {
-      console.log('Cannot move - would exceed 100');
       return;
     }
-
-    console.log('Player index: ', playerIndex);
 
     this.isPlayerMoving = true;
     this.movingPlayerIndex = playerIndex;
@@ -155,10 +142,7 @@ export class BoardComponent implements OnInit {
           if (newPositions[playerIndex] < 100) {
             newPositions[playerIndex] += 1;
           }
-          console.log(
-            `Player ${this.players()[playerIndex].username} moved to ${newPositions[playerIndex]}`,
-          );
-          return newPositions;
+            return newPositions;
         });
       }, i * 800);
     }
@@ -170,9 +154,6 @@ export class BoardComponent implements OnInit {
         if (this.snakes.has(currentPos) || this.ladders.has(currentPos)) {
           const finalPos =
             this.snakes.get(currentPos) || this.ladders.get(currentPos);
-          console.log(
-            `Snake/Ladder detected at ${currentPos}, moving to ${finalPos}`,
-          );
 
           if (this.snakes.has(currentPos)) {
             this.isSnake = true;
@@ -194,13 +175,9 @@ export class BoardComponent implements OnInit {
             });
           }, 500);
         }
-        (console.log('Player: ', this.players()[playerIndex].username),
-          ' Position: ',
-          this.playersPositions()[playerIndex]);
 
         if (this.playersPositions()[playerIndex] == 100) {
           const winnerName = this.players()[playerIndex].username;
-          console.log(`Player ${winnerName} reached 100`);
           const roomId = localStorage.getItem('roomId') || '';
           this.gameService.gameEnded(winnerName, roomId);
         }
@@ -238,19 +215,6 @@ export class BoardComponent implements OnInit {
 
     const x = col * this.cellSize;
     const y = row * this.cellSize;
-
-    console.log(
-      'Position:',
-      currPosition,
-      'Row:',
-      row,
-      'Col:',
-      col,
-      'X:',
-      x,
-      'Y:',
-      y,
-    );
 
     return `translate(${x}px, ${y}px)`;
   }

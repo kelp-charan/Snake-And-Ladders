@@ -51,7 +51,6 @@ export class RoomService {
     this.socketService
       .listen<{ message: string }>('error')
       .subscribe((data) => {
-        console.log('Error received in RoomService: ', data);
         this.errorMessage.next(data.message);
       });
   }
@@ -60,7 +59,6 @@ export class RoomService {
     this.socketService
       .listen<{ success: boolean; playerId: number }>('roomCreated')
       .subscribe((data) => {
-        console.log('Room created: ', data);
         this.roomResponse.next({ ...data, type: 'create' });
       });
   }
@@ -69,7 +67,6 @@ export class RoomService {
     this.socketService
       .listen<{ success: boolean; playerId: number }>('roomJoined')
       .subscribe((data) => {
-        console.log('Room joined: ', data);
         this.roomResponse.next({ ...data, type: 'join' });
       });
   }
@@ -84,14 +81,12 @@ export class RoomService {
 
   private listenToPlayerJoined() {
     this.socketService.listen<Room>('playerJoined').subscribe((data) => {
-      console.log('Player joined room: ', data);
       this.room.next(data);
     });
   }
 
   private listenToRoomDetails() {
     this.socketService.listen<Room>('roomDetails').subscribe((data) => {
-      console.log('Room details received: ', data);
       this.room.next(data);
     });
   }
@@ -100,7 +95,6 @@ export class RoomService {
     this.socketService
       .listen<{ room: Room; playerId: number }>('rejoinSuccess')
       .subscribe((data) => {
-        console.log('Rejoin successful: ', data);
         this.room.next(data.room);
         this.roomResponse.next({
           success: true,

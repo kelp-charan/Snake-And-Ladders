@@ -34,10 +34,6 @@ export class GameDetailsComponent implements OnInit {
     private roomService: RoomService,
   ) {
     effect(() => {
-      console.log(
-        'Room details changed (Game Details Component): ',
-        this.room(),
-      );
       const username = localStorage.getItem('username')!;
       this.room().players.forEach((player: Player, index: number) => {
         player.username === username ? (this.currPlayerId = index) : null;
@@ -48,18 +44,9 @@ export class GameDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin = localStorage.getItem('username')!;
-    console.log('Room state: ', this.room().gameState);
 
     this.gameDetailsService.gameStatus$.subscribe((data) => {
-      console.log('Change in game status: ', data);
       this.gameStarted = data;
-    });
-
-    this.roomService.errorMessage$.subscribe((err) => {
-      if (err) {
-        // alert(`${err}`);
-        console.log('Error in GameDetailsComponent: ', err);
-      }
     });
   }
 

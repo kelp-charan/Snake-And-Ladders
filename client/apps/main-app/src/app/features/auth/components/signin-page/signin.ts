@@ -29,7 +29,6 @@ export class Signin {
 
     this.authService.signIn(this.username, this.password).subscribe({
       next: (response) => {
-        console.log('Login successful: ', response);
         if (response && response.user) {
           this.response.set('Login Successful');
           // alert('Login successful!');

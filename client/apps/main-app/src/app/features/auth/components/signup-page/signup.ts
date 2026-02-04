@@ -28,7 +28,6 @@ export class Signup {
     this.authService.signUp(this.username, this.password).subscribe({
       next: (response: any) => {
         // alert(response.message);
-        console.log('Signup Response: ', response);
         this.response.set(response.message);
 
         setTimeout(() => {

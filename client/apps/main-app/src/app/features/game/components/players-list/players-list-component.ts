@@ -26,10 +26,6 @@ export class PlayersListComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     effect(() => {
-      console.log(
-        'Players list updated (Players List Component): ',
-        this.players(),
-      );
       this.changeDetectorRef.detectChanges();
     });
   }

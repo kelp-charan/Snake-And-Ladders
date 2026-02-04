@@ -32,14 +32,12 @@ export class GameDetailsService {
 
   private listenToStatusChanges() {
     this.socketService.listen<Room>('statusChanged').subscribe((data) => {
-      console.log('Status change received in GameDetailsService: ', data);
       this.room.next(data);
     });
   }
 
   private listenToGameStart() {
     this.socketService.listen('gameStarted').subscribe((data) => {
-      console.log('Game started received in GameDetailsService: ', data);
       this.gameStatus.next(data);
     });
   }

@@ -41,12 +41,6 @@ export class DiceComponent implements OnInit {
       if (data) {
         this.value.set(data.diceValue);
         this.checkIfMyTurn(data.playerTurn);
-        console.log(
-          'Dice rolled:',
-          data.diceValue,
-          'Next turn:',
-          data.playerTurn,
-        );
       }
     });
 
