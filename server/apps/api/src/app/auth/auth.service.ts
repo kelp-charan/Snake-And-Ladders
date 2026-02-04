@@ -14,7 +14,8 @@ export class AuthService {
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await this.userService.createUser(username, hashedPassword);
-      return { message: 'User created successfully', user };
+      const userResponse = { userId: user.userId, username: user.username};
+      return { message: 'User created successfully', user: userResponse };
     } catch (err) {
       Logger.log('Error: ', err.message);
 
@@ -40,9 +41,11 @@ export class AuthService {
       username: user.username,
     };
 
+    const userResponse = { userId: user.userId, username: user.username};
+
     return {
       message: 'Login successful',
-      user,
+      user: userResponse,
       token: this.generateJwtToken(payload),
     };
   }
