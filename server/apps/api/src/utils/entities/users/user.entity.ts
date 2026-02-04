@@ -9,7 +9,7 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'USERS',
+  tableName: 'users',
   timestamps: true,
 })
 export class User extends Model {
@@ -18,7 +18,7 @@ export class User extends Model {
   @Column({
     type: DataType.UUID,
   })
-  id: string;
+  userId: string;
 
   @Column({
     type: DataType.STRING,
