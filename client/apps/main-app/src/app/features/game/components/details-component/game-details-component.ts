@@ -4,7 +4,7 @@ import { Component, effect, inject, input, OnInit } from '@angular/core';
 import { DiceComponent } from '../dice/dice-component';
 import { PlayersListComponent } from '../players-list/players-list-component';
 
-import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
+import { IPlayer, IRoom } from '@snake-and-ladders-monorepo/interfaces';
 import { GameDetailsService } from 'apps/main-app/src/app/core/services/game-details-service';
 import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
 
@@ -18,7 +18,7 @@ import { GameState } from '@snake-and-ladders-monorepo/enums';
   styleUrl: './game-details-component.scss',
 })
 export class GameDetailsComponent implements OnInit {
-  room = input.required<Room>();
+  room = input.required<IRoom>();
   currentTurn = input<number>(0);
   gameStarted: boolean = false;
 
@@ -35,7 +35,7 @@ export class GameDetailsComponent implements OnInit {
   ) {
     effect(() => {
       const username = localStorage.getItem('username')!;
-      this.room().players.forEach((player: Player, index: number) => {
+      this.room().players.forEach((player: IPlayer, index: number) => {
         player.username === username ? (this.currPlayerId = index) : null;
       });
       localStorage.setItem('playerId', this.currPlayerId.toString());

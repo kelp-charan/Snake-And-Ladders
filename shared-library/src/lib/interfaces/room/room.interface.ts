@@ -1,11 +1,11 @@
 import { GameState } from "../../enums";
 
-import { Player } from "../player/player.interface";
+import { IPlayer } from "../player/player.interface";
 
-export interface Room {
+export interface IRoom {
   roomId: string;
   admin: string;
-  players: Player[];
+  players: IPlayer[];
   gameState: GameState;
   turn: number;
 }

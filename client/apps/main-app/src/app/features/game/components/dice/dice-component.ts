@@ -1,6 +1,6 @@
 import { Component, input, OnInit, signal } from '@angular/core';
 
-import { Player } from '@snake-and-ladders-monorepo/interfaces';
+import { IPlayer } from '@snake-and-ladders-monorepo/interfaces';
 import { DiceService } from '../../../../core/services/dice-service';
 import { GameDetailsService } from '../../../../core/services/game-details-service';
 
@@ -14,7 +14,7 @@ export class DiceComponent implements OnInit {
   value = signal<number>(1);
   isRolling = signal<boolean>(false);
 
-  players = input<Player[]>();
+  players = input<IPlayer[]>();
   currentTurn = input<number>(0);
 
   isCurrentPlayerTurn = signal<boolean>(false);

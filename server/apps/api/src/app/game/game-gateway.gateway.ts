@@ -9,12 +9,12 @@ import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
 
 import { GameState } from '@snake-and-ladders-monorepo/enums';
-import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
+import { IPlayer, IRoom } from '@snake-and-ladders-monorepo/interfaces';
 
-interface ServerPlayer extends Player {
+interface ServerPlayer extends IPlayer {
   disconnectedTimer?: ReturnType<typeof setTimeout>;
 }
-interface ServerRoom extends Room {
+interface ServerRoom extends IRoom {
   players: ServerPlayer[];
 }
 
@@ -102,7 +102,7 @@ export class GameGatewayGateway {
     this.server.to(roomId).emit('playerJoined', room);
   }
 
-  private getClientRoom(room: ServerRoom): Room {
+  private getClientRoom(room: ServerRoom): IRoom {
     return {
       roomId: room.roomId,
       admin: room.admin,
@@ -136,7 +136,7 @@ export class GameGatewayGateway {
 
     Logger.log('Sending room details: ', room);
     Logger.log('To client ID: ', client.id);
-    const clietntRoom: Room = this.getClientRoom(room);
+    const clietntRoom: IRoom = this.getClientRoom(room);
 
     this.server.to(client.id).emit('roomDetails', clietntRoom);
   }
@@ -180,7 +180,7 @@ export class GameGatewayGateway {
 
     Logger.log(`Player ${username} rejoined room ${roomId}`);
 
-    const clientRoom: Room = this.getClientRoom(room);
+    const clientRoom: IRoom = this.getClientRoom(room);
     this.server.to(client.id).emit('roomDetails', clientRoom);
   }
 
@@ -210,7 +210,7 @@ export class GameGatewayGateway {
     room.players[playerIndex].isReady = status;
     this.rooms.set(roomId, room);
 
-    const clientRoom: Room = this.getClientRoom(room);
+    const clientRoom: IRoom = this.getClientRoom(room);
     this.server.to(roomId).emit('statusChanged', clientRoom);
   }
 

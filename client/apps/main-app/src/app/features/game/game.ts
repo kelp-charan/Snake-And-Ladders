@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Room } from '@snake-and-ladders-monorepo/interfaces';
+import { IRoom } from '@snake-and-ladders-monorepo/interfaces';
 
 import { RoomService } from '../../core/services/room-service';
 
@@ -18,7 +18,7 @@ import { GameDetailsComponent } from './components/details-component/game-detail
 })
 export class Game implements OnInit {
   roomId: string = '';
-  room = signal<Room | null>(null);
+  room = signal<IRoom | null>(null);
   currentTurn = signal<number>(0);
   gameEnded = signal<boolean>(false);
   winner = signal<string>('');

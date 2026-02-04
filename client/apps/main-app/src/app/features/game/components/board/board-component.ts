@@ -2,7 +2,7 @@ import { Component, input, OnInit, signal } from '@angular/core';
 
 import { CellComponent } from '../cell/cell-component';
 
-import { Player } from '@snake-and-ladders-monorepo/interfaces';
+import { IPlayer } from '@snake-and-ladders-monorepo/interfaces';
 
 import { Cell } from 'apps/main-app/src/app/core/interfaces/cell.interface';
 import { DiceService } from 'apps/main-app/src/app/core/services/dice-service';
@@ -16,7 +16,7 @@ import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
   styleUrl: './board-component.scss',
 })
 export class BoardComponent implements OnInit {
-  players = input.required<Player[]>();
+  players = input.required<IPlayer[]>();
 
   board: Cell[][] = [];
   cellSize = 75;

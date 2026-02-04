@@ -1,4 +1,4 @@
-export interface Player {
+export interface IPlayer {
   socketId: string;
   username: string;
   character: 1 | 2 | 3 | 4;

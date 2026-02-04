@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Room } from '@snake-and-ladders-monorepo/interfaces';
+import { IRoom } from '@snake-and-ladders-monorepo/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { SocketService } from './socket-service';
 
@@ -7,7 +7,7 @@ import { SocketService } from './socket-service';
   providedIn: 'root',
 })
 export class GameDetailsService {
-  room = new BehaviorSubject<Room | null>(null);
+  room = new BehaviorSubject<IRoom | null>(null);
   room$ = this.room.asObservable();
 
   gameStatus = new BehaviorSubject<boolean | any>(null);
@@ -31,7 +31,7 @@ export class GameDetailsService {
   }
 
   private listenToStatusChanges() {
-    this.socketService.listen<Room>('statusChanged').subscribe((data) => {
+    this.socketService.listen<IRoom>('statusChanged').subscribe((data) => {
       this.room.next(data);
     });
   }

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Player } from '@snake-and-ladders-monorepo/interfaces';
+import { IPlayer } from '@snake-and-ladders-monorepo/interfaces';
 
 @Component({
   selector: 'app-players-list-component',
@@ -17,7 +17,7 @@ import { Player } from '@snake-and-ladders-monorepo/interfaces';
   styleUrl: './players-list-component.scss',
 })
 export class PlayersListComponent implements OnInit {
-  players = input.required<Player[]>();
+  players = input.required<IPlayer[]>();
   currentTurn = input<number>(0);
 
   myUsername: string = '';

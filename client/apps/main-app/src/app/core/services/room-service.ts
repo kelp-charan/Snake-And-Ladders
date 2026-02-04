@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { SocketService } from './socket-service';
 
-import { Room } from '@snake-and-ladders-monorepo/interfaces';
+import { IRoom } from '@snake-and-ladders-monorepo/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoomService {
-  room = new BehaviorSubject<Room | null>(null);
+  room = new BehaviorSubject<IRoom | null>(null);
   room$ = this.room.asObservable();
 
   roomResponse = new Subject<{
@@ -72,20 +72,20 @@ export class RoomService {
 
 
   private listenToPlayerJoined() {
-    this.socketService.listen<Room>('playerJoined').subscribe((data) => {
+    this.socketService.listen<IRoom>('playerJoined').subscribe((data) => {
       this.room.next(data);
     });
   }
 
   private listenToRoomDetails() {
-    this.socketService.listen<Room>('roomDetails').subscribe((data) => {
+    this.socketService.listen<IRoom>('roomDetails').subscribe((data) => {
       this.room.next(data);
     });
   }
 
   private listenToRejoinSuccess() {
     this.socketService
-      .listen<{ room: Room; playerId: number }>('rejoinSuccess')
+      .listen<{ room: IRoom; playerId: number }>('rejoinSuccess')
       .subscribe((data) => {
         this.room.next(data.room);
         this.roomResponse.next({
