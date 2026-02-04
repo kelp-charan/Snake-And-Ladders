@@ -8,7 +8,7 @@ import {
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
 
-import { GameState } from '@snake-and-ladders-monorepo/enums';
+import { GameStateEnum } from '@snake-and-ladders-monorepo/enums';
 import { IPlayer, IRoom } from '@snake-and-ladders-monorepo/interfaces';
 
 interface ServerPlayer extends IPlayer {
@@ -46,7 +46,7 @@ export class GameGatewayGateway {
     const newRoom: ServerRoom = {
       roomId: roomId,
       admin: username,
-      gameState: GameState.WAITING,
+      gameState: GameStateEnum.WAITING,
       turn: 0,
       players: [
         {
@@ -234,7 +234,7 @@ export class GameGatewayGateway {
       return;
     }
 
-    room.gameState = GameState.STARTED;
+    room.gameState = GameStateEnum.STARTED;
     this.server.to(roomId).emit('gameStarted', true);
   }
 
@@ -272,7 +272,7 @@ export class GameGatewayGateway {
       newPosition = player.currPosition;
     } else if (newPosition === 100) {
       player.currPosition = 100;
-      room.gameState = GameState.ENDED;
+      room.gameState = GameStateEnum.ENDED;
       this.rooms.set(roomId, room);
     }
 

@@ -9,7 +9,7 @@ import { GameDetailsService } from 'apps/main-app/src/app/core/services/game-det
 import { RoomService } from 'apps/main-app/src/app/core/services/room-service';
 
 import { Router } from '@angular/router';
-import { GameState } from '@snake-and-ladders-monorepo/enums';
+import { GameStateEnum } from '@snake-and-ladders-monorepo/enums';
 
 @Component({
   selector: 'app-game-details-component',
@@ -22,7 +22,7 @@ export class GameDetailsComponent implements OnInit {
   currentTurn = input<number>(0);
   gameStarted: boolean = false;
 
-  gameState = GameState;
+  gameState = GameStateEnum;
 
   currPlayerId: number = Number(localStorage.getItem('playerId'));
   admin: string = '';
