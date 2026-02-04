@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import bcrypt from "bcrypt";
 import { UserService } from '../user/user.service';
 
 @Injectable()
@@ -11,7 +12,8 @@ export class AuthService {
 
   async signUp(username: string, password: string) {
     try {
-      const user = await this.userService.createUser(username, password);
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await this.userService.createUser(username, hashedPassword);
       return { message: 'User created successfully', user };
     } catch (err) {
       Logger.log('Error: ', err.message);
@@ -27,7 +29,9 @@ export class AuthService {
       return { message: 'User not found' };
     }
 
-    if (user.password !== password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
       return { message: 'Invalid credentials' };
     }
 
