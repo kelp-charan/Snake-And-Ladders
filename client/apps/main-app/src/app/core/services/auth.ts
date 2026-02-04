@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { User } from '../interfaces/user.interface';
+import { AuthApiUrls } from 'apps/main-app/src/api-urls';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signUp(username: string, password: string) {
-    return this.http.post('http://localhost:3000/api/auth/signup', {
+    return this.http.post(AuthApiUrls.SIGNUP, {
       username,
       password,
     });
@@ -18,7 +19,7 @@ export class AuthService {
 
   signIn(username: string, password: string) {
     return this.http.post<{ message: string; user: User; token: string }>(
-      'http://localhost:3000/api/auth/signin',
+      AuthApiUrls.SIGNIN,
       { username, password },
     );
   }
