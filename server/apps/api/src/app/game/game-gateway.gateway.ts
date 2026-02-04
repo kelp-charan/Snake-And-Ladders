@@ -7,8 +7,6 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
-// import { Room } from './interfaces/room.interface';
-// import { Player } from './interfaces/player.interface';
 
 import { GameState } from '@snake-and-ladders-monorepo/enums';
 import { Player, Room } from '@snake-and-ladders-monorepo/interfaces';
@@ -186,8 +184,6 @@ export class GameGatewayGateway {
     this.server.to(client.id).emit('roomDetails', clientRoom);
   }
 
-  // ==========  Game Logic ==========
-
   @SubscribeMessage('changeStatus')
   changeStatus(
     @MessageBody() data: { roomId: string; status: boolean },
@@ -242,24 +238,6 @@ export class GameGatewayGateway {
     this.server.to(roomId).emit('gameStarted', true);
   }
 
-  // ========= Dice Roll Logic ==========
-
-  // private snakes = new Map<number, number>([
-  //   [48, 28],
-  //   [67, 24],
-  //   [79, 59],
-  //   [74, 52],
-  //   [83, 19],
-  //   [96, 76]
-  // ]);
-
-  // private ladders = new Map<number, number>([
-  //   [8, 13],
-  //   [18, 65],
-  //   [27, 46],
-  //   [60, 61],
-  //   [68, 89],
-  // ]);
 
   @SubscribeMessage('rollDice')
   rollDice(
@@ -296,25 +274,7 @@ export class GameGatewayGateway {
       player.currPosition = 100;
       room.gameState = GameState.ENDED;
       this.rooms.set(roomId, room);
-
-      // this.server.to(roomId).emit('gameEnded', {
-      //   winner: player.username,
-      //   room
-      // });
-      // return;
     }
-
-    // if (this.snakes.has(newPosition)) {
-    //   const snakeTail = this.snakes.get(newPosition);
-    //   Logger.log(`Player ${player.username} hit snake at ${newPosition}, sliding to ${snakeTail}`);
-    //   newPosition = snakeTail;
-    // }
-
-    // if (this.ladders.has(newPosition)) {
-    //   const ladderTop = this.ladders.get(newPosition);
-    //   Logger.log(`Player ${player.username} hit ladder at ${newPosition}, climbing to ${ladderTop}`);
-    //   newPosition = ladderTop;
-    // }
 
     player.currPosition = newPosition;
 

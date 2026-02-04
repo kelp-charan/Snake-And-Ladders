@@ -8,28 +8,9 @@ import { RoomService } from '../../core/services/room-service';
   styleUrl: './auth.scss',
   imports: [RouterOutlet],
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent{
   errorMessage = signal<string>('');
   authResponse = signal<string>('');
 
   constructor(private roomService: RoomService) {}
-
-  ngOnInit(): void {
-    // this.subscribeToErrorMessage();
-  }
-
-  // private subscribeToErrorMessage() {
-  //     this.roomService.errorMessage$.subscribe(
-  //         err => {
-  //             if(err) {
-  //                 console.log("Error (Auth Component): ", err);
-  //                 this.errorMessage.set(err);
-
-  //                 setInterval(() => {
-  //                     this.errorMessage.set('');
-  //                 }, 2500);
-  //             }
-  //         }
-  //     )
-  // }
 }

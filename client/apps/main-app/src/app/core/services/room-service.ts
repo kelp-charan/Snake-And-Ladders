@@ -28,7 +28,6 @@ export class RoomService {
     this.listenToPlayerJoined();
     this.listenToRoomDetails();
     this.listenToRejoinSuccess();
-    // this.listenToSessionExpired();
   }
 
   creaetRoom(roomId: string, username: string) {
@@ -71,13 +70,6 @@ export class RoomService {
       });
   }
 
-  // saveSession(roomId: string, username: string, playerId: number) {
-  //   this.socketService.saveSession(roomId, username, playerId);
-  // }
-
-  // clearSession() {
-  //   this.socketService.clearSession();
-  // }
 
   private listenToPlayerJoined() {
     this.socketService.listen<Room>('playerJoined').subscribe((data) => {
@@ -103,13 +95,4 @@ export class RoomService {
         });
       });
   }
-
-  // private listenToSessionExpired() {
-  //   this.socketService.listen<{ message: string }>('sessionExpired').subscribe(
-  //     data => {
-  //       console.log("Session expired: ", data.message);
-  //       this.socketService.clearSession();
-  //     }
-  //   )
-  // }
 }

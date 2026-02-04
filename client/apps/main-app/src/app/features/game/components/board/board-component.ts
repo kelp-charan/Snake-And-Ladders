@@ -53,26 +53,14 @@ export class BoardComponent implements OnInit {
     private roomService: RoomService,
   ) {
     this.initializeBoard();
-
-    // effect(() => {
-    //   const pl = this.players();
-
-    //   if(pl?.length) {
-    //     this.playersPositions.set(pl.map(p => p.currPosition));
-    //   }
-    // })
   }
 
   ngOnInit(): void {
-    // const initialPositions = this.players().map(p => p.currPosition);
-    // this.playersPositions.set(initialPositions);
     this.playersPositions.set(this.players().map((p) => p.currPosition ?? 1));
 
     this.subscibeToDiceRolls();
 
     this.subscribeToPlayerJoined();
-
-    // this.subscribeToGameEnded();
   }
 
   private initializeBoard() {
@@ -90,8 +78,6 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  // private
-
   private subscribeToPlayerJoined() {
     this.roomService.room$.subscribe((room) => {
       const players = room?.players;
@@ -104,20 +90,10 @@ export class BoardComponent implements OnInit {
   private subscibeToDiceRolls() {
     this.diceService.diceRolled$.subscribe((data) => {
       if (!data) return;
-      // we get diceValue, newPosition, playerIndex
       this.movePlayer(data?.diceValue, data.newPosition, data.playerIndex);
     });
   }
 
-  // private subscribeToGameEnded() {
-  //   this.diceService.gameEnded$.subscribe(
-  //     data => {
-  //       if(!data) return;
-  //       console.log("Game Ended received in Board Component! Winner: ", data.winner);
-  //       this.winner = data.winner;
-  //     }
-  //   )
-  // }
 
   private movePlayer(
     diceValue: number,
@@ -203,15 +179,6 @@ export class BoardComponent implements OnInit {
         }
       }
     }
-
-    // row = 9 - Math.floor(currPosition/10);
-    // col = (currPosition % 10) - 1;
-
-    // if(row == 0 && col == 0) {
-    //   const x = col * this.cellSize;
-    //   const y = (9-row) * this.cellSize;
-    //   return `translate(${x}px, ${y}px)`;
-    // }
 
     const x = col * this.cellSize;
     const y = row * this.cellSize;

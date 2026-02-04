@@ -19,7 +19,6 @@ export class SocketService {
   constructor() {
     this.socket.on('connect', () => {
       this.connected.next(true);
-      // this.rejoinRoom();
     });
 
     this.socket.on('disconnect', () => {
@@ -38,26 +37,4 @@ export class SocketService {
       });
     });
   }
-
-  // saveSession(roomId: string, username: string, playerId: number) {
-  //     const session = { roomId, username, playerId };
-  //     localStorage.setItem('gameSession', JSON.stringify(session));
-  // }
-
-  // getSession(): { roomId: string, username: string, playerId: number } | null {
-  //     const session = localStorage.getItem('gameSession');
-  //     return session ? JSON.parse(session) : null;
-  // }
-
-  // clearSession() {
-  //     localStorage.removeItem('gameSession');
-  // }
-
-  // private rejoinRoom() {
-  //     const session = this.getSession();
-  //     if (session) {
-  //         console.log('Rejoining room:', session.roomId);
-  //         this.emit('rejoinRoom', session);
-  //     }
-  // }
 }

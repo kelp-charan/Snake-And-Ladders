@@ -31,13 +31,11 @@ export class Signin {
       next: (response) => {
         if (response && response.user) {
           this.response.set('Login Successful');
-          // alert('Login successful!');
           localStorage.setItem('token', response.token);
           localStorage.setItem('username', this.username);
           this.router.navigate(['/auth/room']);
         } else if (response) {
           this.response.set(response.message);
-          // alert(response.message);
         }
 
         setTimeout(() => {

@@ -19,14 +19,12 @@
 }
 
 .panel-content {
-  /* background-color: rebeccapurple; */
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .dice-section {
-  /* background-color: tomato; */
   height: 40%;
   border: none;
 }
@@ -130,8 +128,6 @@
 .dice-section {
   display: flex;
   justify-content: center;
-  /* padding-top: 20px;
-    border-top: 1px solid #ffffff1a; */
 }
 
 .btn-exit {

@@ -21,7 +21,6 @@ export class Room implements OnInit {
   constructor(private roomService: RoomService) {}
 
   ngOnInit(): void {
-    // this.subscribeToErrorMessages();
     this.subscribeToRoomRequests();
     this.subscribeToErrorMessages();
   }
@@ -83,13 +82,10 @@ export class Room implements OnInit {
     this.roomService.roomResponse$.subscribe((response) => {
       if (response === null) return;
       if (response.success) {
-        // alert('Successfully created or joined room');
 
         const username = localStorage.getItem('username') || '';
         localStorage.setItem('playerId', response.playerId.toString());
         localStorage.setItem('roomId', this.roomId);
-
-        // this.errorMessage.set(null);
 
         this.animate.set(true);
 
@@ -97,7 +93,6 @@ export class Room implements OnInit {
           this.router.navigate([`/room/${this.roomId}`]);
         });
 
-        // this.router.navigate([`/room/${this.roomId}`]);
       } else {
         alert('Failed to create or join room');
       }
