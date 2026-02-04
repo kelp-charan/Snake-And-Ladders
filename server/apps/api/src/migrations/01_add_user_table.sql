@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS users (
+  userId UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  username TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL,
+  createdAt TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  updatedAt TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+
