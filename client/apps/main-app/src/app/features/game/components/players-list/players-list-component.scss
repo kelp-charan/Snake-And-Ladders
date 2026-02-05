@@ -1,0 +1,79 @@
+@use '../../../../../styles/variables' as *;
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-item {
+  height: 40px;
+
+  background-color: $player-bg-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  :first-child {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.player-item.me {
+  background-color: $player-wood-color;
+}
+
+.player-item.active-turn {
+  background-color: $player-active-color;
+  box-shadow:
+    0 0 0 2px $color-white,
+    0 0 10px $player-active-color;
+}
+
+p {
+  margin: 12px;
+  color: $color-white;
+}
+
+.position-badge {
+  font-size: 11px;
+  background-color: $color-black-20;
+  color: $color-white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.status-chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-chip.ready {
+  background-color: $status-success-bg;
+  color: $status-success-text;
+  border: 1px solid $status-success-border;
+}
+
+.status-chip.not-ready {
+  background-color: $status-notready-bg;
+  color: $status-notready-text;
+  border: 1px solid $player-wood-border;
+}
+
+img {
+  height: 90%;
+  width: auto;
+
+  object-fit: contain;
+}

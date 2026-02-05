@@ -1,0 +1,35 @@
+<div class="board-container">
+  <div class="board">
+    <img src="/assets/snake-ladder.png" class="snake-ladder-board" />
+    @for(row of board; track $index) {
+    <div class="row">
+      @for(cell of row; track $index) {
+      <app-cell-component [cell]="cell"></app-cell-component>
+      }
+    </div>
+    }
+
+    <div class="player-container">
+      @for(player of players(); track $index) {
+      <div
+        class="player-token"
+        [style.transform]="playerTransform($index)"
+        [class.translate-token]="player.character === 3 || player.character === 4"
+        [style.scale]="isPlayerMoving"
+      >
+        <img src="/assets/character-{{ player.character }}.png" />
+      </div>
+      }
+    </div>
+  </div>
+
+  @if(isSnake) {
+  <div class="snake-ladder-popup">
+    <p>🐍</p>
+  </div>
+  } @if(isLadder) {
+  <div class="snake-ladder-popup">
+    <p>🪜</p>
+  </div>
+  }
+</div>

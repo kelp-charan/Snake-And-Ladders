@@ -1,0 +1,172 @@
+@use '../../../../../styles/variables' as *;
+
+.room-container {
+  --background-color: #{$auth-bg-color};
+
+  top: 330px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+
+  position: relative;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin: 0px;
+}
+
+form {
+  width: 400px;
+  height: 200px;
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 10px solid $auth-text-dark;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  z-index: 10;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn-group {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  padding: 10px 6px;
+  font-size: large;
+  border-radius: 5px;
+  outline: 2px solid $auth-input-outline;
+  border: none;
+}
+
+label {
+  font-size: large;
+  font-weight: 600;
+  color: white;
+}
+
+button {
+  padding: 14px 20px;
+  font-family: 'Irish Grover', system-ui;
+  font-size: medium;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-create {
+  background-color: $room-btn-primary;
+}
+
+.btn-create:hover {
+  background-color: $room-btn-primary-hover;
+  border: 3px solid darken($room-btn-primary-hover, 20%);
+}
+
+.btn-join {
+  background-color: $room-btn-exit;
+}
+
+.btn-join:hover {
+  background-color: $room-btn-exit-hover;
+  border: 3px solid $room-btn-border-dark;
+}
+
+.error-message {
+  color: red;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.circle-container {
+  width: 100%;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 20;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  width: 300vmax;
+  height: 300vmax;
+
+  border-radius: 50%;
+
+  background: transparent;
+  box-shadow: 0 0 0 150vmax #000000;
+
+  animation: circle-close 1.5s ease-in-out forwards;
+}
+
+@keyframes circle-close {
+  0% {
+    width: 300vmax;
+    height: 300vmax;
+  }
+  100% {
+    width: 0;
+    height: 0;
+  }
+}
+
+.msg-box-container {
+  position: fixed;
+  left: 350px;
+  bottom: 200px;
+
+  width: 200px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  p {
+    position: absolute;
+    z-index: 20;
+    top: 30px;
+    left: 20px;
+
+    width: 140px;
+    height: max-content;
+
+    text-wrap-mode: wrap;
+
+    color: red;
+    font-weight: 600;
+
+    text-align: center;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="room-container">
+  <form action="">
+    <h2>Create or Join Room</h2>
+
+    <div class="form-group">
+      <label for="roomId">Enter Room ID</label>
+      <input
+        type="text"
+        id="roomId"
+        name="roomId"
+        required
+        [(ngModel)]="roomId"
+      />
+    </div>
+
+    <div class="btn-group">
+      <button (click)="createRoom()" class="btn-create">Create room</button>
+      <button (click)="joinRoom()" class="btn-join">Join room</button>
+    </div>
+  </form>
+</div>
+
+@if(animate()) {
+<div [class.circle-container]="animate()">
+  <div class="circle"></div>
+</div>
+} @if(errorMessage()) {
+<div class="msg-box-container">
+  <img src="/assets/msg-box.png" alt="" />
+  <p>{{ errorMessage() }}</p>
+</div>
+}

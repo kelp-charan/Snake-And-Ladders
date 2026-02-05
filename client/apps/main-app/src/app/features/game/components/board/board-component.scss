@@ -1,0 +1,145 @@
+@use '../../../../../styles/variables' as *;
+
+:host {
+  display: contents;
+}
+
+.board-container {
+  height: 95%;
+  width: 65%;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  border-radius: 10px;
+
+  background-color: $board-color;
+
+  border: 6px solid $board-border-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+
+  aspect-ratio: 1/1;
+
+  border: 2px solid black;
+
+  position: relative;
+}
+
+.snake-ladder-board {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  object-fit: contain;
+}
+
+.row {
+  display: flex;
+}
+
+.player-container {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.player-token {
+  width: 40px;
+  height: 40px;
+
+  transition: transform 0.8s ease-in-out;
+
+  img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    filter: drop-shadow(1px 2px 3px black);
+  }
+}
+
+.translate-token {
+  transform: translateY(-20px);
+}
+
+.snake-ladder-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 200px;
+
+  background: $overlay-70;
+  border-radius: 20px;
+
+  z-index: 100;
+
+  animation: popupScale 2s ease-out forwards;
+}
+
+.snake-ladder-popup p {
+  font-size: 120px;
+  margin: 0;
+}
+
+@keyframes popupScale {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes winnerScale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
