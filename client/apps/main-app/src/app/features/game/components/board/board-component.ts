@@ -94,7 +94,6 @@ export class BoardComponent implements OnInit {
     });
   }
 
-
   private movePlayer(
     diceValue: number,
     newPosition: number,
@@ -118,7 +117,7 @@ export class BoardComponent implements OnInit {
           if (newPositions[playerIndex] < 100) {
             newPositions[playerIndex] += 1;
           }
-            return newPositions;
+          return newPositions;
         });
       }, i * 800);
     }

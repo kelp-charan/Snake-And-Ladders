@@ -238,7 +238,6 @@ export class GameGatewayGateway {
     this.server.to(roomId).emit('gameStarted', true);
   }
 
-
   @SubscribeMessage('rollDice')
   rollDice(
     @MessageBody() data: { roomId: string; diceValue: number },
@@ -339,7 +338,9 @@ export class GameGatewayGateway {
           } else {
             if (room.admin === player.username) {
               room.admin = room.players[0].username;
-              Logger.log(`Admin left. New admin is ${room.players[0].username} in room ${roomId}`);
+              Logger.log(
+                `Admin left. New admin is ${room.players[0].username} in room ${roomId}`,
+              );
             }
             this.rooms.set(roomId, room);
             this.server

@@ -1,6 +1,6 @@
-import { GameStateEnum } from "../../enums";
+import { GameStateEnum } from '../../enums';
 
-import { IPlayer } from "../player/player.interface";
+import { IPlayer } from '../player/player.interface';
 
 export interface IRoom {
   roomId: string;

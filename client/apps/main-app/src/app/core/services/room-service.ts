@@ -70,7 +70,6 @@ export class RoomService {
       });
   }
 
-
   private listenToPlayerJoined() {
     this.socketService.listen<IRoom>('playerJoined').subscribe((data) => {
       this.room.next(data);

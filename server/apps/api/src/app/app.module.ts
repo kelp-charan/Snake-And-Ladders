@@ -8,7 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import { GameGatewayGateway } from './game/game-gateway.gateway';
 import { UserModule } from './user/user.module';
 
-
 @Module({
   imports: [
     AuthModule,

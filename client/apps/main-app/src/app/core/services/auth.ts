@@ -39,8 +39,7 @@ export class AuthService {
       }
 
       return true;
-    } 
-    catch (err) {
+    } catch (err) {
       this.logout();
       return false;
     }

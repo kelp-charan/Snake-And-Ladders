@@ -8,7 +8,7 @@ import { RoomService } from '../../core/services/room-service';
   styleUrl: './auth.scss',
   imports: [RouterOutlet],
 })
-export class AuthComponent{
+export class AuthComponent {
   errorMessage = signal<string>('');
   authResponse = signal<string>('');
 

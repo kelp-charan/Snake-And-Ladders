@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 import { UserService } from '../user/user.service';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AuthService {
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await this.userService.createUser(username, hashedPassword);
-      const userResponse = { userId: user.userId, username: user.username};
+      const userResponse = { userId: user.userId, username: user.username };
       return { message: 'User created successfully', user: userResponse };
     } catch (err) {
       Logger.log('Error: ', err.message);
@@ -41,7 +41,7 @@ export class AuthService {
       username: user.username,
     };
 
-    const userResponse = { userId: user.userId, username: user.username};
+    const userResponse = { userId: user.userId, username: user.username };
 
     return {
       message: 'Login successful',

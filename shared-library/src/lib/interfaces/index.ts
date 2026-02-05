@@ -1,2 +1,2 @@
-export * from "./player/player.interface";
-export * from "./room/room.interface";;
+export * from './player/player.interface';
+export * from './room/room.interface';

@@ -1,4 +1,4 @@
-import { IRoom } from "@snake-and-ladders-monorepo/interfaces";
+import { IRoom } from '@snake-and-ladders-monorepo/interfaces';
 
 export interface IDiceRollResult {
   diceValue: number;
