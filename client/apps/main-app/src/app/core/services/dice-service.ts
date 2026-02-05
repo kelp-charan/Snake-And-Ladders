@@ -2,20 +2,13 @@ import { Injectable } from '@angular/core';
 import { IRoom } from '@snake-and-ladders-monorepo/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { SocketService } from './socket-service';
-
-export interface DiceRollResult {
-  diceValue: number;
-  playerTurn: number;
-  playerIndex: number;
-  newPosition: number;
-  room: IRoom;
-}
+import { IDiceRollResult } from '../interfaces/dice-roll.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DiceService {
-  private diceRolled = new BehaviorSubject<DiceRollResult | null>(null);
+  private diceRolled = new BehaviorSubject<IDiceRollResult | null>(null);
   diceRolled$ = this.diceRolled.asObservable();
 
   private gameEnded = new BehaviorSubject<{
@@ -35,7 +28,7 @@ export class DiceService {
 
   private listenToDiceRolled() {
     this.socketService
-      .listen<DiceRollResult>('diceRolled')
+      .listen<IDiceRollResult>('diceRolled')
       .subscribe((data) => {
         this.diceRolled.next(data);
       });
